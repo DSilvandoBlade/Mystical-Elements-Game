@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17637913, g: 0.21359125, b: 0.2620476, a: 1}
+  m_IndirectSpecularColor: {r: 0.17637956, g: 0.21359189, b: 0.26204845, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_StandbyUpdate: 2
+  m_StandbyUpdate: 1
   m_LookAt: {fileID: 2102808658}
   m_Follow: {fileID: 561834328}
   m_Lens:
@@ -185,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72939873}
-  m_LocalRotation: {x: 0.3887603, y: 0.004239514, z: -0.001788891, w: 0.92132753}
+  m_LocalRotation: {x: 0.3887606, y: 0.00410402, z: -0.0017317189, w: 0.92132807}
   m_LocalPosition: {x: 0.3, y: -22.90001, z: -26.800003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -301,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 507212264}
   m_Layer: 0
-  m_Name: Orientation
+  m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507212263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.0029, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -729,7 +729,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3185542059290914875}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c1de84d963f41dc449c48c3b8251f4b8, type: 2}
   m_CullingMode: 0
@@ -1846,7 +1846,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964729908}
-  m_LocalRotation: {x: 0.3887603, y: 0.004239514, z: -0.001788891, w: 0.92132753}
+  m_LocalRotation: {x: 0.3887606, y: 0.00410402, z: -0.0017317189, w: 0.92132807}
   m_LocalPosition: {x: 0.3, y: -22.90001, z: -26.800003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4858,10 +4858,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e60f583ae3827c40b8f9cc05763e2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planet: {fileID: 744959149}
-  PlayerPlaceholder: {fileID: 677914061}
-  speed: 16
-  JumpHeight: 1.2
+  m_maxSpeed: 20
+  m_turnSpeed: 20
+  groundCheckObj: {fileID: 507212263}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_jumpUpVelocity: 20
+  m_coyoteTime: 0
+  m_jumpBufferingTime: 0
+  m_graphicsTransform: {fileID: 973032888}
+  m_graphicRotationSpeed: 5000
 --- !u!4 &8844254707267072846
 Transform:
   m_ObjectHideFlags: 0
