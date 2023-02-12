@@ -20,15 +20,21 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_maxSpeed;
     private float m_setMaxSpeed;
     [SerializeField] private float m_turnSpeed;
-    
+    [Space(10)]
+
+    [Header("Ground")]
+    [SerializeField] private Transform m_groundCheckObj;
+    [SerializeField] private LayerMask m_groundLayerMask;
+    [SerializeField] private PhysicMaterial slipperyMat;
+    [SerializeField] private PhysicMaterial stickyMat;
     [Space(10)]
 
     [Header("Jump")]
-    [SerializeField] private GameObject groundCheckObj;
-    [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private float m_jumpUpVelocity;
     [SerializeField] private float m_coyoteTime;
+    private float m_coyoteTimer;
     [SerializeField] private float m_jumpBufferingTime;
+    private float m_jumpBufferingTimer;
     [Space(10)]
 
     [Header("Graphics")]
@@ -78,7 +84,21 @@ public class Player : MonoBehaviour
         //Jump
         if (m_playerInput.actions["Jump"].triggered)
         {
+            m_jumpBufferingTimer = m_jumpBufferingTime;
+            Debug.Log("JumpInputted");
+        }
+
+        m_jumpBufferingTimer -= Time.deltaTime;
+
+        if (!IsGrounded())
+        {
+            m_coyoteTimer -= Time.deltaTime;
+        }
+
+        if (m_coyoteTimer > 0 && JumpAvaliable() && m_jumpBufferingTimer > 0)
+        {
             m_rigidbody.AddForce(transform.up * 1000 * m_jumpUpVelocity * Time.deltaTime);
+            Debug.Log("Jumped");
         }
     }
 
@@ -99,6 +119,28 @@ public class Player : MonoBehaviour
 
         //Movement Anim
         m_characterAnim.SetFloat("Movement", Mathf.Abs(m_playerInput.actions["Move"].ReadValue<Vector2>().x) + Mathf.Abs(m_playerInput.actions["Move"].ReadValue<Vector2>().y));
+    }
+
+    private bool JumpAvaliable()
+    {
+        return IsGrounded() || (!IsGrounded() && m_coyoteTime <= 0);
+    }
+
+    private bool IsGrounded()
+    {
+        if (!Physics.CheckSphere(m_groundCheckObj.position, 0.25f, m_groundLayerMask))
+        {
+            m_collider.sharedMaterial = slipperyMat;
+            return false;
+        }
+
+        if (m_jumpBufferingTime > 0)
+        {
+            m_collider.sharedMaterial = stickyMat;
+        }
+
+        m_coyoteTimer = m_coyoteTime;
+        return true;
     }
 
     private void GraphicsRotation()

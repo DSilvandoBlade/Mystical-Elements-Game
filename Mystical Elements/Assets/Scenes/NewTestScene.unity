@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17637956, g: 0.21359189, b: 0.26204845, a: 1}
+  m_IndirectSpecularColor: {r: 0.17637913, g: 0.21359125, b: 0.2620476, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -185,8 +185,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72939873}
-  m_LocalRotation: {x: 0.3887606, y: 0.00410402, z: -0.0017317189, w: 0.92132807}
-  m_LocalPosition: {x: 0.3, y: -22.90001, z: -26.800003}
+  m_LocalRotation: {x: 0.3887603, y: 0.004239514, z: -0.001788891, w: 0.92132753}
+  m_LocalPosition: {x: 0.3, y: -16.430008, z: -26.800003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -315,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507212263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0029, z: 0}
+  m_LocalPosition: {x: 0, y: -0.0083, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561834326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.63118315, y: -60.15, z: 4.587573}
+  m_LocalPosition: {x: 0.63118315, y: -53.68, z: 4.587573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 744959152}
   - component: {fileID: 744959151}
   - component: {fileID: 744959150}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Planet
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1846,8 +1846,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964729908}
-  m_LocalRotation: {x: 0.3887606, y: 0.00410402, z: -0.0017317189, w: 0.92132807}
-  m_LocalPosition: {x: 0.3, y: -22.90001, z: -26.800003}
+  m_LocalRotation: {x: 0.3887603, y: 0.004239514, z: -0.001788891, w: 0.92132753}
+  m_LocalPosition: {x: 0.3, y: -16.430008, z: -26.800003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2159,7 +2159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102808656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.63118315, y: -60.15, z: 4.587573}
+  m_LocalPosition: {x: 0.63118315, y: -53.68, z: 4.587573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4702,7 +4702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8781954326171584896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.63118315, y: -60.15, z: 4.587573}
+  m_LocalPosition: {x: 0.63118315, y: -53.68, z: 4.587573}
   m_LocalScale: {x: 47.472782, y: 47.472782, z: 47.472782}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4860,15 +4860,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxSpeed: 20
   m_turnSpeed: 20
-  groundCheckObj: {fileID: 507212263}
-  groundLayerMask:
+  m_groundCheckObj: {fileID: 507212264}
+  m_groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  m_jumpUpVelocity: 20
-  m_coyoteTime: 0
-  m_jumpBufferingTime: 0
+  slipperyMat: {fileID: 13400000, guid: 0ef4453f6226c494981291a881067445, type: 2}
+  stickyMat: {fileID: 13400000, guid: cde13e1436f988d489304dd5ef4e443b, type: 2}
+  m_jumpUpVelocity: 10
+  m_coyoteTime: 1
+  m_jumpBufferingTime: 1
   m_graphicsTransform: {fileID: 973032888}
-  m_graphicRotationSpeed: 5000
+  m_graphicRotationSpeed: 10000
 --- !u!4 &8844254707267072846
 Transform:
   m_ObjectHideFlags: 0
