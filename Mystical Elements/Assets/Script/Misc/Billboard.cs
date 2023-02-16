@@ -6,6 +6,6 @@ public class Billboard : MonoBehaviour
 {
     void Update()
     {
-        transform.localRotation = Quaternion.LookRotation(transform.localPosition - Camera.main.transform.position);
+        transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
     }
 }

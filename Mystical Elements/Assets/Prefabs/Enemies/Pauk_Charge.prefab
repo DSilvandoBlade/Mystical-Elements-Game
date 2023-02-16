@@ -658,6 +658,8 @@ MonoBehaviour:
   m_attack: 5
   m_doesStun: 0
   m_hitVFX: {fileID: 2483725864892921542, guid: 47f6e3d473a32ab4e9f1fd29ad350169, type: 3}
+  m_floatingText: {fileID: 8299370431779867434, guid: 1d4fcd44f1c4f6047ba7f74dbbb70c63, type: 3}
+  m_floatingTextOffset: 1
 --- !u!1 &7661504664654814307
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float m_speed;
     [SerializeField] private float m_maxHealth;
     private float m_health;
+
+    [Header("Death References")]
+    [SerializeField] private GameObject m_ragDoll;
     #endregion
 
     #region Public Variables
@@ -60,6 +63,10 @@ public class EnemyBase : MonoBehaviour
 
     private void Death()
     {
+        Vector3 dir = m_player.transform.position - transform.position;
+        GameObject ragdoll = GameObject.Instantiate(m_ragDoll, transform.position, transform.rotation);
+        ragdoll.GetComponent<Rigidbody>().AddForce(dir * -5000);
+        Destroy(ragdoll, 5f);
         Destroy(this.gameObject);
     }
     #endregion
