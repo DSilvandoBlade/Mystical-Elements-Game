@@ -75,7 +75,7 @@ public class PaukBehaviour : MonoBehaviour
         }
 
         //MOVEMENT
-        if (m_mobile && distance > m_playerDistance)
+        if (m_mobile && distance > m_playerDistance && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
         {
             transform.Translate(Vector3.forward * Time.deltaTime * m_base.Speed);
             m_animator.SetBool("Moving", true);
@@ -84,8 +84,17 @@ public class PaukBehaviour : MonoBehaviour
 
         else if (m_mobile && distance < m_playerDistance)
         {
-            m_animator.SetBool("Moving", false);
-            m_animator.SetBool("Attacking", true);
+            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+            {
+                m_animator.SetBool("Moving", false);
+                m_animator.SetBool("Attacking", false);
+            }
+
+            else
+            {
+                m_animator.SetBool("Moving", false);
+                m_animator.SetBool("Attacking", true);
+            }
         }
 
         m_timer -= 1 * Time.deltaTime;

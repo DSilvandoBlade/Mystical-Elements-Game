@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    #region Private Variables
+    private Animator m_animator;
+    private Player m_player;
+    private Rigidbody m_rigidbody;
+    #endregion
+
     #region Serialized Variables
     [Header("Attributes")]
     [SerializeField] private float m_speed;
@@ -22,6 +28,10 @@ public class EnemyBase : MonoBehaviour
     #region Default Functions
     void Start()
     {
+        m_animator = GetComponentInChildren<Animator>();
+        m_player = FindObjectOfType<Player>();
+        m_rigidbody = GetComponent<Rigidbody>();
+
         m_health = m_maxHealth;
     }
     #endregion
@@ -29,7 +39,9 @@ public class EnemyBase : MonoBehaviour
     #region Health Functions
     public void TakeDamage(float damageToRecieve, bool stunEnemy)
     {
-        m_health = Mathf.Clamp(m_health - damageToRecieve, m_maxHealth, 0f);
+        m_health = Mathf.Clamp(m_health - damageToRecieve, 0f, m_maxHealth);
+
+        Debug.Log("Damage: " + damageToRecieve + " Stun: " + stunEnemy + " Current Health: " + m_health);
 
         //call floating text number
 
@@ -40,7 +52,9 @@ public class EnemyBase : MonoBehaviour
 
         if (stunEnemy)
         {
-            //hurt animation & stun
+            m_animator.SetTrigger("Stun");
+            Vector3 dir = m_player.transform.position - transform.position;
+            m_rigidbody.AddForce(dir * -50);
         }
     }
 

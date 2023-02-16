@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -57,6 +58,13 @@ public class Player : MonoBehaviour
     [Header("HUD References")]
     [SerializeField] private Image m_healthBar;
     [SerializeField] private Image m_energyBar;
+    [Space(10)]
+
+    [Header("Cam")]
+    [SerializeField] private CinemachineVirtualCamera m_camBrain;
+    [SerializeField] private float m_camShakeIntensity;
+    [SerializeField] private float m_camShakeTime;
+    [SerializeField] private float m_fieldOfViewIncrease;
     #endregion
 
     #region Default Functions (Start & Update)
@@ -69,7 +77,7 @@ public class Player : MonoBehaviour
         m_characterAnim = GetComponentInChildren<Animator>();
 
         m_setMaxSpeed = m_maxSpeed;
-        m_maxHealth = m_health;
+        m_health = m_maxHealth;
 
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 30;
@@ -81,6 +89,7 @@ public class Player : MonoBehaviour
         m_zDirection = m_playerInput.actions["Move"].ReadValue<Vector2>().y * Time.deltaTime * m_maxSpeed;
         m_rDirection = m_playerInput.actions["Rot"].ReadValue<float>();
 
+        FieldOfView();
         Animation();
 
         if (m_zDirection != 0 || m_xDirection != 0)
@@ -202,9 +211,12 @@ public class Player : MonoBehaviour
     /// <param name="stunPlayer"> Boolean that checkes iff the attack can stun the player </param>
     public void DamagePlayer(float healthToRemove, bool stunPlayer)
     {
-        m_health = Mathf.Clamp(m_health - healthToRemove, m_maxHealth, 0f);
+        m_health = Mathf.Clamp(m_health - healthToRemove, 0f, m_maxHealth);
 
         m_healthBar.fillAmount = m_health / m_maxHealth;
+
+        Debug.Log("Damage: " + healthToRemove + " Stun: " + stunPlayer + " Current Health: " + m_health);
+
 
         if (m_health <= 0)
         {
@@ -214,11 +226,31 @@ public class Player : MonoBehaviour
 
         if (stunPlayer)
         {
+            CinemachineBasicMultiChannelPerlin perlin = m_camBrain.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            perlin.m_AmplitudeGain = m_camShakeIntensity * 2;
+            Invoke("StopScreenShake", m_camShakeTime * 1.5f);
+
             //Call Stun Player
             //NOTE: Have a check for if the stun function is already being played so it doesn't stack
         }
 
+        else
+        {
+            CinemachineBasicMultiChannelPerlin perlin = m_camBrain.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            perlin.m_AmplitudeGain = m_camShakeIntensity;
+            Invoke("StopScreenShake", m_camShakeTime);
+        }
+
         //TO DO: Damage Animation / Particle effect
+    }
+
+    /// <summary>
+    /// Called to stop the cinemachine camera from shaking
+    /// </summary>
+    private void StopScreenShake()
+    {
+        CinemachineBasicMultiChannelPerlin perlin = m_camBrain.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        perlin.m_AmplitudeGain = 0;
     }
 
     /// <summary>
@@ -248,6 +280,24 @@ public class Player : MonoBehaviour
         {
             m_characterAnim.SetTrigger("Attack");
         }
+    }
+
+    private void FieldOfView()
+    {
+        float fov = 40;
+
+        if (IsSprinting())
+        {
+            fov += m_fieldOfViewIncrease;
+        }
+
+        else if (m_playerInput.actions["Move"].ReadValue<Vector2>() != Vector2.zero)
+        {
+            fov += m_fieldOfViewIncrease / 4;
+        }
+
+        m_camBrain.m_Lens.FieldOfView = Mathf.SmoothStep(m_camBrain.m_Lens.FieldOfView, fov, 0.5f); ;
+        
     }
 
     private void GraphicsRotation()
