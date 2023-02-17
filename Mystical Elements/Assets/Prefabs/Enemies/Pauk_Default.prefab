@@ -163,8 +163,9 @@ GameObject:
   - component: {fileID: 1889213208123867406}
   - component: {fileID: 5505657603496089747}
   - component: {fileID: 6464058935754502078}
+  - component: {fileID: 8949539476549736443}
   m_Layer: 0
-  m_Name: Pauk_Charge
+  m_Name: Pauk_Default
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 10
   m_maxHealth: 100
+  m_ragDoll: {fileID: 7765718717876261816, guid: 4187ba624065c17419e20696bd7728ad, type: 3}
 --- !u!114 &6093247959465553959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +261,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db484b264da109b489d02eddfb068df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &8949539476549736443
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844357933350194211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 1.45, z: 0}
 --- !u!1 &2056534173051574640
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,9 +728,9 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d967d8265389d7e40bde3301f7e0a520, type: 2}
-  - {fileID: 2100000, guid: 17354f70725c57e4cafc5901d1a28aae, type: 2}
-  - {fileID: 2100000, guid: a857e8cd9b56bf841b082de1ad50a6ab, type: 2}
-  - {fileID: 2100000, guid: 47da0c1f0a71afd44b2df40697b6b53a, type: 2}
+  - {fileID: 2100000, guid: 44ad84fefce1fa943a007b20810d0f2a, type: 2}
+  - {fileID: 2100000, guid: 268e93da70f8bc34fb2ab07a0c10d7b2, type: 2}
+  - {fileID: 2100000, guid: 466da1f261dcf3c42897e202aaa5d7bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

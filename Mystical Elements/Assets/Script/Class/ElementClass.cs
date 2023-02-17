@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElementClass : MonoBehaviour
+[System.Serializable]
+public static class ElementClass
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum Element
     {
-        
+        DEFAULT = 0,
+        PLASMA,
+        FROST,
+        CHARGE,
+        FLORA
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
