@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using ElementTree;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -8,6 +9,11 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     #region Public Variables
+    [HideInInspector] public Element SelectedElement
+    {
+        get { return m_selectedElement; }
+        set { m_selectedElement = value; }
+    }
     #endregion
 
     #region Private Variables
@@ -27,6 +33,7 @@ public class Player : MonoBehaviour
     [Header("Attributes")]
     private float m_health;
     [SerializeField] private float m_maxHealth;
+    [SerializeField] private Element m_selectedElement;
     [Space(10)]
 
     [Header("Motion")]
@@ -209,14 +216,17 @@ public class Player : MonoBehaviour
     /// </summary>
     /// <param name="healthToRemove"> Amount of damage recieved </param>
     /// <param name="stunPlayer"> Boolean that checkes iff the attack can stun the player </param>
-    public void DamagePlayer(float healthToRemove, bool stunPlayer)
+    public void DamagePlayer(float healthToRemove, bool stunPlayer, Element elementType)
     {
         m_health = Mathf.Clamp(m_health - healthToRemove, 0f, m_maxHealth);
 
         m_healthBar.fillAmount = m_health / m_maxHealth;
 
-        Debug.Log("Damage: " + healthToRemove + " Stun: " + stunPlayer + " Current Health: " + m_health);
+        //Debug.Log("Damage: " + healthToRemove + " Stun: " + stunPlayer + " Current Health: " + m_health);
 
+        VFXManager vfxManager = FindObjectOfType<VFXManager>();
+        vfxManager.SummonHitEffect(transform.position, elementType);
+        vfxManager.SummonFloatingText(transform.position, ((int)healthToRemove).ToString(), vfxManager.GetElementColour(elementType));
 
         if (m_health <= 0)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ElementTree;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
@@ -15,6 +16,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private float m_speed;
     [SerializeField] private float m_maxHealth;
     private float m_health;
+    [SerializeField] private Element m_bodyElement;
 
     [Header("Death References")]
     [SerializeField] private GameObject m_ragDoll;
@@ -40,9 +42,15 @@ public class EnemyBase : MonoBehaviour
     #endregion
 
     #region Health Functions
-    public void TakeDamage(float damageToRecieve, bool stunEnemy)
+    public void TakeDamage(float damageToRecieve, bool stunEnemy, Element elementType)
     {
-        m_health = Mathf.Clamp(m_health - damageToRecieve, 0f, m_maxHealth);
+        float res = ElementClass.GetFetchResistance(m_bodyElement, elementType);
+
+        m_health = Mathf.Clamp(m_health - (damageToRecieve * res), 0f, m_maxHealth);
+
+        VFXManager vfxManager = FindObjectOfType<VFXManager>();
+        vfxManager.SummonHitEffect(transform.position, elementType);
+        vfxManager.SummonFloatingText(transform.position, ((int)(damageToRecieve * res)).ToString(), vfxManager.GetElementColour(elementType));
 
         Debug.Log("Damage: " + damageToRecieve + " Stun: " + stunEnemy + " Current Health: " + m_health);
 
@@ -57,6 +65,7 @@ public class EnemyBase : MonoBehaviour
         {
             m_animator.SetTrigger("Stun");
             Vector3 dir = m_player.transform.position - transform.position;
+            m_rigidbody.velocity = Vector3.zero; //Limits velocity before adding force to avoid stack
             m_rigidbody.AddForce(dir * -50);
         }
     }
