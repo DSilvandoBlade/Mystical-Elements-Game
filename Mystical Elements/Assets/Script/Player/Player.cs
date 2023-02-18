@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
     [Header("Graphics")]
     [SerializeField] private Transform m_graphicsTransform;
     [SerializeField] private float m_graphicRotationSpeed;
+    [SerializeField] private MeshRenderer m_hatMesh;
+    [SerializeField] private SkinnedMeshRenderer m_robeMesh;
     [Space(10)]
 
     [Header("HUD References")]
@@ -273,7 +275,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region Visual Variables (Animations)
+    #region Visual Functions (Animations)
     /// <summary>
     /// Animation Handler
     /// </summary>
@@ -310,11 +312,30 @@ public class Player : MonoBehaviour
         
     }
 
+    public void ChangeRobeColour(Material[] mat)
+    {
+        m_hatMesh.materials = mat;
+        m_robeMesh.materials = mat;
+
+        Debug.Log("Material changed to " + mat);
+    }
+
     private void GraphicsRotation()
     {
         Vector3 direction = new Vector3(m_xDirection, 0, m_zDirection);
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
         m_graphicsTransform.localRotation = Quaternion.RotateTowards(transform.localRotation, toRotation, m_graphicRotationSpeed * Time.deltaTime);
     }
+    #endregion
+
+    #region Elemental Functions
+
+    public void SwitchElement(Element element)
+    {
+        m_selectedElement = element;
+
+        //TO DO: Element Switch animation
+    }
+
     #endregion
 }

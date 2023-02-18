@@ -295,6 +295,94 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Element",
+            "id": "cfb4f747-9e7e-4020-b9c1-e25105fde8ad",
+            "actions": [
+                {
+                    "name": "Plasma",
+                    "type": "Button",
+                    "id": "03d52c4c-a365-4b3f-9860-0269a110b8df",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Frost",
+                    "type": "Button",
+                    "id": "c3a5aa0d-1963-455e-9f11-a07a2a9b89fc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Charge",
+                    "type": "Button",
+                    "id": "9862de09-bff7-41c3-a4d7-9f83d97e0449",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Flora",
+                    "type": "Button",
+                    "id": "961425b8-c8d4-4f83-8fbc-3c3d29100644",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "38a52657-44b1-4ae3-88f7-379963688f36",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Plasma",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e80fc67e-1f0f-4284-b35d-1ea13a72d91c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Frost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3081126c-7e2e-476d-92eb-5988aa1e82b4",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Charge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "481dfb78-ddff-4535-9d4c-0c149fe052b5",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flora",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

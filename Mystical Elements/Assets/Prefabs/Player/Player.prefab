@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 100
-  m_selectedElement: 0
+  m_selectedElement: 1
   m_maxSpeed: 20
   m_turnSpeed: 20
   m_groundCheckObj: {fileID: 4312998545887385696}
@@ -1046,6 +1046,8 @@ MonoBehaviour:
   m_jumpBufferingTime: 1
   m_graphicsTransform: {fileID: 4312998546411414576}
   m_graphicRotationSpeed: 10000
+  m_hatMesh: {fileID: 7959384634497559612}
+  m_robeMesh: {fileID: 4429829529871301819}
   m_healthBar: {fileID: 0}
   m_energyBar: {fileID: 0}
   m_camBrain: {fileID: 0}
@@ -2997,6 +2999,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attack: 0
   m_doesStun: 0
-  m_hitVFX: {fileID: 2483725864892921542, guid: 47f6e3d473a32ab4e9f1fd29ad350169, type: 3}
-  m_floatingText: {fileID: 8299370431779867434, guid: 1d4fcd44f1c4f6047ba7f74dbbb70c63, type: 3}
-  m_floatingTextOffset: 0.05
