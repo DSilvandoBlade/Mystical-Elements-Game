@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaukBehaviour : MonoBehaviour
+public class OrbiBehaviour : MonoBehaviour
 {
     #region Private Variables
     private GameObject m_player;
@@ -19,6 +19,7 @@ public class PaukBehaviour : MonoBehaviour
     [Header("Tracking Values")]
     [SerializeField] private float m_alertDistance;
     [SerializeField] private float m_playerDistance;
+    [SerializeField] private float m_evadeDistance;
     [SerializeField] private float m_timerForNewPath;
     [SerializeField] private bool m_mobile;
     #endregion
@@ -71,9 +72,16 @@ public class PaukBehaviour : MonoBehaviour
         }
 
         //MOVEMENT
-        if (m_mobile && distance > m_playerDistance && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+        if (m_mobile && (distance > m_playerDistance || distance < m_evadeDistance) && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * m_base.Speed);
+            float speed = m_base.Speed;
+
+            if (distance < m_evadeDistance)
+            {
+                speed = -m_base.Speed * 2f;
+            }
+
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
             m_animator.SetBool("Moving", true);
             m_animator.SetBool("Attacking", false);
         }
