@@ -20,6 +20,8 @@ public class EnemyBase : MonoBehaviour
 
     [Header("Death References")]
     [SerializeField] private GameObject m_ragDoll;
+    [SerializeField] private bool m_isChildObject;
+    [SerializeField] private GameObject m_parent;
     #endregion
 
     #region Public Variables
@@ -72,11 +74,17 @@ public class EnemyBase : MonoBehaviour
 
     private void Death()
     {
+        m_player.StartScreenShake(false);
         Vector3 dir = m_player.transform.position - transform.position;
         GameObject ragdoll = GameObject.Instantiate(m_ragDoll, transform.position, transform.rotation);
         ragdoll.GetComponent<Rigidbody>().AddForce(dir * -5000);
         Destroy(ragdoll, 5f);
-        Destroy(this.gameObject);
+
+        if (m_isChildObject)
+        {
+            Destroy(m_parent);
+        }
+        Destroy(gameObject);
     }
     #endregion
 }

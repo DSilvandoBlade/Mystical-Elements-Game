@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: 1.1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.57
   scatter:
     m_OverrideState: 1
-    m_Value: 0.588
+    m_Value: 0.802
   clamp:
     m_OverrideState: 1
     m_Value: 65472
@@ -68,7 +68,7 @@ MonoBehaviour:
     m_Value: 0.5
   rounded:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
 --- !u!114 &-6110664751267114342
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Post-Processing Profile
+  m_Name: ScenePP
   m_EditorClassIdentifier: 
   components:
   - {fileID: -6790779168277458836}
@@ -173,12 +173,12 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   gaussianStart:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 10
   gaussianEnd:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 30
   gaussianMaxRadius:
     m_OverrideState: 0

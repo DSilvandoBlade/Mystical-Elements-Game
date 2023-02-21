@@ -224,7 +224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4f976c1cc64d0314d9bb7a67a78e7059, type: 2}
+  - {fileID: 2100000, guid: 0e68402b83e69634ebac281469dc37b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -300,6 +300,8 @@ MonoBehaviour:
   m_maxHealth: 250
   m_bodyElement: 2
   m_ragDoll: {fileID: 9192840842913788391, guid: 5c3ea08f984689c4ba60637f72b87cd3, type: 3}
+  m_isChildObject: 0
+  m_parent: {fileID: 0}
 --- !u!114 &2241833970742118252
 MonoBehaviour:
   m_ObjectHideFlags: 0

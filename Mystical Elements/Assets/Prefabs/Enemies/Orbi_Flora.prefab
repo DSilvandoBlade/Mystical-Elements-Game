@@ -352,6 +352,8 @@ MonoBehaviour:
   m_maxHealth: 250
   m_bodyElement: 4
   m_ragDoll: {fileID: 1232300065842530491, guid: 2e405f46768470144ab934edcdc05d36, type: 3}
+  m_isChildObject: 0
+  m_parent: {fileID: 0}
 --- !u!114 &5227612924302927958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +490,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2c7b987741134948ba22b40c34e8230, type: 2}
+  - {fileID: 2100000, guid: 5fd7dad04a368044d94cb36e07178336, type: 2}
   - {fileID: 2100000, guid: cbcedf271ee71de429bcffeeb5fd8b72, type: 2}
   - {fileID: 2100000, guid: 40b272dc379e5f342999814326fa00e3, type: 2}
   m_StaticBatchInfo:

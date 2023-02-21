@@ -141,7 +141,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a89ffb192100de4c841e2d9d487f713, type: 2}
+  - {fileID: 2100000, guid: 06bec1ef16e44d64586368eac0240897, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -365,7 +365,7 @@ Transform:
   m_Children:
   - {fileID: 536192803967983480}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4211305447829518552
 MonoBehaviour:
@@ -383,6 +383,8 @@ MonoBehaviour:
   m_maxHealth: 250
   m_bodyElement: 1
   m_ragDoll: {fileID: 3909118010258833082, guid: a29451543d91e0349a0c9d40ea63f897, type: 3}
+  m_isChildObject: 0
+  m_parent: {fileID: 0}
 --- !u!114 &4961397488965438837
 MonoBehaviour:
   m_ObjectHideFlags: 0

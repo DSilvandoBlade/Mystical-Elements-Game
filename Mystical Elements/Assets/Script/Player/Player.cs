@@ -88,8 +88,8 @@ public class Player : MonoBehaviour
         m_setMaxSpeed = m_maxSpeed;
         m_health = m_maxHealth;
 
-        QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 30;
+        //QualitySettings.vSyncCount = 1;
+        //Application.targetFrameRate = 60;
     }
 
     private void Update()
@@ -236,14 +236,22 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (stunPlayer)
+        StartScreenShake(stunPlayer);
+
+        //TO DO: Damage Animation / Particle effect
+    }
+
+    /// <summary>
+    /// Called to shake the sccreen
+    /// </summary>
+    public void StartScreenShake(bool stunned)
+    {
+        if (stunned)
         {
             CinemachineBasicMultiChannelPerlin perlin = m_camBrain.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             perlin.m_AmplitudeGain = m_camShakeIntensity * 2;
             Invoke("StopScreenShake", m_camShakeTime * 1.5f);
 
-            //Call Stun Player
-            //NOTE: Have a check for if the stun function is already being played so it doesn't stack
         }
 
         else
@@ -252,8 +260,7 @@ public class Player : MonoBehaviour
             perlin.m_AmplitudeGain = m_camShakeIntensity;
             Invoke("StopScreenShake", m_camShakeTime);
         }
-
-        //TO DO: Damage Animation / Particle effect
+        
     }
 
     /// <summary>
