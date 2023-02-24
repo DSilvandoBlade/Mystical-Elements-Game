@@ -379,6 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6418e8aefcdae37468fb8934a4cc499a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyType: 1
+  m_elementalReactions: {fileID: 5210158213623395931, guid: 1490aabfe6658474ba1b7d2554f64955, type: 3}
   m_speed: 7
   m_maxHealth: 250
   m_bodyElement: 1
@@ -397,10 +399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e217deebec7e83246932098e6b5fcb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_planet: {fileID: 0}
-  m_alertDistance: 15
-  m_playerDistance: 0.08
-  m_evadeDistance: 0.06
+  m_alertDistance: 20
+  m_playerDistance: 9.5
+  m_evadeDistance: 8
   m_timerForNewPath: 1
   m_mobile: 1
 --- !u!54 &2370001879594685769
@@ -431,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db484b264da109b489d02eddfb068df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GRAVITY_FORCE: 800
 --- !u!135 &1204942630110812705
 SphereCollider:
   m_ObjectHideFlags: 0

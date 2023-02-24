@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<EnemyBase>().TakeDamage(m_attack, m_doesStun, m_player.SelectedElement);
+            other.GetComponent<EnemyBase>().TakeDamage(m_attack, m_doesStun, m_player.SelectedElement, false);
         }
     }
 }

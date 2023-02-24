@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
         get { return m_selectedElement; }
         set { m_selectedElement = value; }
     }
+
+    [HideInInspector] public float MeleeDamage
+    {
+        get { return m_meleeDamage; }
+        set { m_meleeDamage = value; }
+    }
     #endregion
 
     #region Private Variables
@@ -57,6 +63,34 @@ public class Player : MonoBehaviour
     private float m_jumpBufferingTimer;
     [Space(10)]
 
+    [Header("Melee Settings")]
+    [SerializeField] private float m_meleeDamage;
+    [SerializeField] private float m_meleeCooldown;
+    private float m_meleeTimer;
+    [SerializeField] private float m_meleeTapBuffer;
+    private float m_meleeBuffer;
+    [Space(10)]
+
+    [Header("Projectile Settings")]
+    [SerializeField] private GameObject m_projectile;
+    [SerializeField] private Transform m_projectilePivot;
+    [SerializeField] private float m_projectileSpeed;
+    [SerializeField] private float m_projectileCooldown;
+    private float m_projectileTimer;
+    [Space(2f)]
+    [SerializeField] private float m_chargeMax;
+    private float m_chargeTimer;
+    private bool m_isCharging;
+    [Space(4f)]
+    [SerializeField] private float m_projectileDamage;
+    [SerializeField] private float m_projectileDamageIncreaseRate;
+    private float m_projectileTrueDamage;
+    [Space(2f)]
+    [SerializeField] private float m_projectileSize;
+    [SerializeField] private float m_projectileSizeIncreaseRate;
+    private float m_projectileTrueSize;
+    [Space(10)]
+
     [Header("Graphics")]
     [SerializeField] private Transform m_graphicsTransform;
     [SerializeField] private float m_graphicRotationSpeed;
@@ -88,8 +122,8 @@ public class Player : MonoBehaviour
         m_setMaxSpeed = m_maxSpeed;
         m_health = m_maxHealth;
 
-        //QualitySettings.vSyncCount = 1;
-        //Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 30;
     }
 
     private void Update()
@@ -98,6 +132,7 @@ public class Player : MonoBehaviour
         m_zDirection = m_playerInput.actions["Move"].ReadValue<Vector2>().y * Time.deltaTime * m_maxSpeed;
         m_rDirection = m_playerInput.actions["Rot"].ReadValue<float>();
 
+        //Visual
         FieldOfView();
         Animation();
 
@@ -105,10 +140,15 @@ public class Player : MonoBehaviour
         {
             GraphicsRotation();
         }
+
+        //Combat
+        ProjectileCharging();
+        Melee();
     }
 
     private void FixedUpdate()
     {
+        //Moving Controls
         Movement();
         Jump();
     }
@@ -282,23 +322,94 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Combat Functions
+
+    private void Melee()
+    {
+        m_meleeBuffer -= Time.deltaTime;
+
+        if (m_playerInput.actions["Attack"].triggered && !m_isCharging) //is charging boolean is checked so both melee and ranged are not done at the same time
+        {
+            m_meleeBuffer = m_meleeTapBuffer;
+        }
+
+        if (m_meleeBuffer > 0 && m_meleeTimer <= 0)
+        {
+            m_characterAnim.SetTrigger("Attack");
+            m_meleeTimer = m_meleeCooldown;
+        }
+
+        if (m_meleeTimer > 0)
+        {
+            m_meleeTimer -= Time.deltaTime;
+        }
+    }
+
+    private void ProjectileCharging()
+    {
+        if (m_playerInput.actions["Range"].ReadValue<float>() > 0 && m_projectileTimer <= 0 && m_chargeTimer < m_chargeMax && m_meleeTimer <= 0 && m_projectileTimer <= 0) //melee cooldown is checked so both melee and ranged are not done at the same time
+        {
+            m_isCharging = true;
+
+            m_projectileTrueDamage += m_projectileDamageIncreaseRate * Time.deltaTime;
+            m_projectileTrueSize += m_projectileSizeIncreaseRate * Time.deltaTime;
+            m_chargeTimer += Time.deltaTime;
+        }
+
+        else if ((m_playerInput.actions["Range"].WasReleasedThisFrame() && m_isCharging) || m_chargeTimer >= m_chargeMax)
+        {
+            Debug.Log("WAS RELEASED!");
+
+            m_projectileTrueDamage += m_projectileDamage;
+            m_projectileTrueSize += m_projectileSize;
+
+            ProjectileShoot(m_chargeTimer > 1.5f);
+
+            m_projectileTimer = m_projectileCooldown + (m_chargeTimer / 2);
+
+            m_projectileTrueDamage = 0;
+            m_projectileTrueSize = 0;
+            m_chargeTimer = 0;
+        }
+
+        if (m_projectileTimer > 0)
+        {
+            m_projectileTimer -= Time.deltaTime;
+        }
+    }
+
+    private void ProjectileShoot(bool stun)
+    {
+        GameObject projectile = GameObject.Instantiate(m_projectile, m_projectilePivot.position, transform.rotation);
+
+        m_characterAnim.SetBool("LargeShot", stun);
+
+        projectile.transform.localScale = new Vector3(m_projectileTrueSize, m_projectileTrueSize, m_projectileTrueSize);
+        projectile.GetComponent<PlayerCombat>().Attack = m_projectileTrueDamage;
+        projectile.GetComponent<PlayerProjectile>().Speed = m_projectileSpeed;
+
+        projectile.GetComponent<Rigidbody>().velocity = m_graphicsTransform.forward * m_projectileSpeed;
+        Destroy(projectile, 5f);
+
+        m_isCharging = false;
+    }
+
+    #endregion
+
     #region Visual Functions (Animations)
     /// <summary>
     /// Animation Handler
     /// </summary>
     private void Animation()
     {
-        //Sprint Anim
+        //Sprint Animation
         m_characterAnim.SetBool("Flying", IsSprinting());
 
-        //Movement Anim
+        //Movement Animation
         m_characterAnim.SetFloat("Movement", Mathf.Abs(m_playerInput.actions["Move"].ReadValue<Vector2>().x) + Mathf.Abs(m_playerInput.actions["Move"].ReadValue<Vector2>().y));
 
-        //Basic Attack Anim
-        if (m_playerInput.actions["Attack"].triggered)
-        {
-            m_characterAnim.SetTrigger("Attack");
-        }
+        //Charging Animation
+        m_characterAnim.SetBool("Charge", m_isCharging);
     }
 
     private void FieldOfView()
@@ -329,7 +440,7 @@ public class Player : MonoBehaviour
 
     private void GraphicsRotation()
     {
-        Vector3 direction = new Vector3(m_xDirection, 0, m_zDirection);
+        Vector3 direction = new Vector3(m_playerInput.actions["Move"].ReadValue<Vector2>().x, 0, m_playerInput.actions["Move"].ReadValue<Vector2>().y);
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
         m_graphicsTransform.localRotation = Quaternion.RotateTowards(transform.localRotation, toRotation, m_graphicRotationSpeed * Time.deltaTime);
     }

@@ -9,13 +9,10 @@ public class PaukBehaviour : MonoBehaviour
     private EnemyBase m_base;
     private Animator m_animator;
     private float m_timer;
+    private float m_distance;
     #endregion
 
     #region Serialized Variables
-    [Header("Temp Refs")]
-    [SerializeField] private GameObject m_planet;
-    [Space(10)]
-
     [Header("Tracking Values")]
     [SerializeField] private float m_alertDistance;
     [SerializeField] private float m_playerDistance;
@@ -34,6 +31,8 @@ public class PaukBehaviour : MonoBehaviour
 
     private void Update()
     {
+        m_distance = Vector3.Distance(m_player.transform.position, transform.position);
+
         Movement();
     }
     #endregion
@@ -41,13 +40,7 @@ public class PaukBehaviour : MonoBehaviour
     #region Movement Functions
     private void Movement()
     {
-        //MOVEMENT CALCUL
-        Vector3 spokeToActual = transform.position - m_planet.transform.position;
-        Vector3 spokeToCorrect = m_player.transform.position - m_planet.transform.position;
-        float angleFromCenter = Vector3.Angle(spokeToActual, spokeToCorrect);
-        float distance = 2 * Mathf.PI * m_planet.GetComponent<SphereCollider>().radius * (angleFromCenter / 360);
-
-        if (distance < m_alertDistance)
+        if (Alerted())
         {
             //ROTATIONS TO PLAYER
             Vector3 point = m_player.transform.position;
@@ -71,14 +64,14 @@ public class PaukBehaviour : MonoBehaviour
         }
 
         //MOVEMENT
-        if (m_mobile && distance > m_playerDistance && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+        if (m_mobile && !InRange() && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
         {
             transform.Translate(Vector3.forward * Time.deltaTime * m_base.Speed);
             m_animator.SetBool("Moving", true);
             m_animator.SetBool("Attacking", false);
         }
 
-        else if (m_mobile && distance < m_playerDistance)
+        else if (m_mobile && InRange())
         {
             if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
             {
@@ -95,5 +88,40 @@ public class PaukBehaviour : MonoBehaviour
 
         m_timer -= 1 * Time.deltaTime;
     }
+
+    private bool Alerted()
+    {
+        if (m_distance < m_alertDistance)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool InRange()
+    {
+        if (m_distance < m_playerDistance)
+        {
+            return true;
+        }
+
+        return false;
+    }
     #endregion
+
+    public void Freeze(bool isFrozen)
+    {
+        m_mobile = !isFrozen;
+
+        if (isFrozen)
+        {
+            m_animator.speed = 0f;
+        }
+
+        else
+        {
+            m_animator.speed = 1f;
+        }
+    }
 }

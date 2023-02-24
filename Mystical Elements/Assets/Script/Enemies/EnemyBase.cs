@@ -9,9 +9,23 @@ public class EnemyBase : MonoBehaviour
     private Animator m_animator;
     private Player m_player;
     private Rigidbody m_rigidbody;
+    private Element m_layerElement;
+    private float m_resShred = 1f;
+
+    private enum EnemyType
+    {
+        Pauk,
+        Orbi,
+        Rook
+    }
     #endregion
 
     #region Serialized Variables
+    [Header("Basic")]
+    [SerializeField] private EnemyType m_enemyType;
+    [SerializeField] private GameObject m_elementalReactions;
+    [Space(10)]
+
     [Header("Attributes")]
     [SerializeField] private float m_speed;
     [SerializeField] private float m_maxHealth;
@@ -30,6 +44,12 @@ public class EnemyBase : MonoBehaviour
         get { return m_speed; }
         set { m_speed = value; }
     }
+
+    [HideInInspector] public float ResShred
+    {
+        get { return m_resShred; }
+        set { m_resShred = value; }
+    }
     #endregion
 
     #region Default Functions
@@ -44,17 +64,15 @@ public class EnemyBase : MonoBehaviour
     #endregion
 
     #region Health Functions
-    public void TakeDamage(float damageToRecieve, bool stunEnemy, Element elementType)
+    public void TakeDamage(float damageToRecieve, bool stunEnemy, Element elementType, bool reactionDamage)
     {
         float res = ElementClass.GetFetchResistance(m_bodyElement, elementType);
 
-        m_health = Mathf.Clamp(m_health - (damageToRecieve * res), 0f, m_maxHealth);
+        m_health = Mathf.Clamp(m_health - ((damageToRecieve * m_resShred) * res), 0f, m_maxHealth);
 
         VFXManager vfxManager = FindObjectOfType<VFXManager>();
         vfxManager.SummonHitEffect(transform.position, elementType);
-        vfxManager.SummonFloatingText(transform.position, ((int)(damageToRecieve * res)).ToString(), vfxManager.GetElementColour(elementType));
-
-        Debug.Log("Damage: " + damageToRecieve + " Stun: " + stunEnemy + " Current Health: " + m_health);
+        vfxManager.SummonFloatingText(transform.position, ((int)((damageToRecieve * m_resShred) * res)).ToString(), vfxManager.GetElementColour(elementType));
 
         //call floating text number
 
@@ -70,6 +88,38 @@ public class EnemyBase : MonoBehaviour
             m_rigidbody.velocity = Vector3.zero; //Limits velocity before adding force to avoid stack
             m_rigidbody.AddForce(dir * -50);
         }
+
+        if (!reactionDamage)
+        {
+            ReactionCheck(elementType);
+        }
+        else
+        {
+            m_layerElement = Element.DEFAULT;
+        }
+    }
+
+    private void ReactionCheck(Element incomingElement)
+    {
+        if (m_layerElement == Element.DEFAULT || m_layerElement == incomingElement)
+        {
+            m_layerElement = incomingElement;
+            CancelInvoke("LayerElementReset");
+            Invoke("LayerElementReset", 5f);
+        }
+
+        else
+        {
+            GameObject em = GameObject.Instantiate(m_elementalReactions, transform.position, transform.rotation);
+            em.GetComponent<ElementalReaction>().Enemy = this;
+            em.GetComponent<ElementalReaction>().ChooseElementalReaction(m_layerElement, incomingElement);
+            LayerElementReset();
+        }
+    }
+
+    public void LayerElementReset()
+    {
+        m_layerElement = Element.DEFAULT;
     }
 
     private void Death()
@@ -87,4 +137,23 @@ public class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
     #endregion
+
+    public void Freeze(bool isFrozen)
+    {
+        switch (m_enemyType)
+        {
+            case EnemyType.Pauk:
+                GetComponent<PaukBehaviour>().Freeze(isFrozen);
+                break;
+            case EnemyType.Orbi:
+                GetComponent<OrbiBehaviour>().Freeze(isFrozen);
+                break;
+            case EnemyType.Rook:
+                GetComponent<RookBehaviour>().Freeze(isFrozen);
+                break;
+            default:
+                Debug.LogWarning("Behaviour could not be found to freeze");
+                break;
+        }
+    }
 }

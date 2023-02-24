@@ -43,14 +43,14 @@ public class ElementManager : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         m_player = FindObjectOfType<Player>();
         m_playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (m_playerInput.actions["Plasma"].triggered)
         {
@@ -102,6 +102,23 @@ public class ElementManager : MonoBehaviour
             mat[0] = m_floraMaterial;
             mat[1] = m_whiteRobeMat;
             m_player.ChangeRobeColour(mat);
+        }
+    }
+
+    public Material GetRespectedElementalMaterial(Element element)
+    {
+        switch (element)
+        {
+            case Element.PLASMA:
+                return m_plasmaMaterial;
+            case Element.FROST:
+                return m_frostMaterial;
+            case Element.CHARGE:
+                return m_chargeMaterial;
+            case Element.FLORA:
+                return m_floraMaterial;
+            default:
+                return m_whiteRobeMat;
         }
     }
 }

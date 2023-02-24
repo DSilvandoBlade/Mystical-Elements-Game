@@ -36,7 +36,6 @@ namespace ElementTree
             // 1 = 100% of taken damage
             // 0 = 0% of taken damage
             float resistance = 1f;
-            Debug.Log(recievingElement + " --> " + bodyElement);
 
             switch (bodyElement)
             {

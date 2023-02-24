@@ -17,6 +17,13 @@ public class VFXManager : MonoBehaviour
     [SerializeField] private GameObject m_frostHit;
     [SerializeField] private GameObject m_chargeHit;
     [SerializeField] private GameObject m_floraHit;
+    [Space(10)]
+
+    [Header("Element Image")]
+    [SerializeField] private GameObject m_plasmaImage;
+    [SerializeField] private GameObject m_frostImage;
+    [SerializeField] private GameObject m_chargeImage;
+    [SerializeField] private GameObject m_floraImage;
     #endregion
 
     public void SummonHitEffect(Vector3 pos, Element element)
@@ -74,5 +81,32 @@ public class VFXManager : MonoBehaviour
             default:
                 return Color.white;
         }
+    }
+
+    public void LayerElementBillboard(Element layerElement, Transform transform)
+    {
+        GameObject billboard;
+
+        switch (layerElement)
+        {
+            case Element.PLASMA:
+                billboard = m_plasmaImage;
+                break;
+            case Element.FROST:
+                billboard = m_frostImage;
+                break;
+            case Element.CHARGE:
+                billboard = m_chargeImage;
+                break;
+            case Element.FLORA:
+                billboard = m_floraImage;
+                break;
+            default:
+                Debug.LogWarning("Billboard call recieved a null / default entry for layer element");
+                return;
+        }
+
+        billboard = GameObject.Instantiate(billboard, transform);
+        billboard.transform.parent = transform;
     }
 }

@@ -312,7 +312,7 @@ Transform:
   m_Children:
   - {fileID: 8341571801673840856}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -14.878, y: 47.126, z: -8.685}
 --- !u!54 &8341571802784861515
 Rigidbody:
@@ -619,7 +619,7 @@ MonoBehaviour:
     m_SourceObjects:
       m_Length: 1
       m_Item0:
-        transform: {fileID: 0}
+        transform: {fileID: 5282384887155161778, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
         weight: 1
       m_Item1:
         transform: {fileID: 0}
@@ -737,7 +737,7 @@ MonoBehaviour:
     m_SourceObjects:
       m_Length: 1
       m_Item0:
-        transform: {fileID: 0}
+        transform: {fileID: 5282384887155161778, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
         weight: 1
       m_Item1:
         transform: {fileID: 0}
@@ -823,7 +823,7 @@ MonoBehaviour:
     m_SourceObjects:
       m_Length: 1
       m_Item0:
-        transform: {fileID: 0}
+        transform: {fileID: 5282384887155161778, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
         weight: 1
       m_Item1:
         transform: {fileID: 0}
@@ -959,7 +959,7 @@ MonoBehaviour:
     m_SourceObjects:
       m_Length: 1
       m_Item0:
-        transform: {fileID: 0}
+        transform: {fileID: 5282384887155161778, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
         weight: 1
       m_Item1:
         transform: {fileID: 0}
@@ -1071,6 +1071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6418e8aefcdae37468fb8934a4cc499a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyType: 2
+  m_elementalReactions: {fileID: 5210158213623395931, guid: 1490aabfe6658474ba1b7d2554f64955, type: 3}
   m_speed: 0
   m_maxHealth: 350
   m_bodyElement: 3

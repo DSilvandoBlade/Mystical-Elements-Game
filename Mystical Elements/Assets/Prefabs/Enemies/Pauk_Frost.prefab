@@ -146,10 +146,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6418e8aefcdae37468fb8934a4cc499a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyType: 0
+  m_elementalReactions: {fileID: 5210158213623395931, guid: 1490aabfe6658474ba1b7d2554f64955, type: 3}
   m_speed: 10
   m_maxHealth: 1000
   m_bodyElement: 2
   m_ragDoll: {fileID: 7765718717876261816, guid: 4187ba624065c17419e20696bd7728ad, type: 3}
+  m_isChildObject: 0
+  m_parent: {fileID: 0}
 --- !u!114 &5851745985114984335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,10 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce13d5960ab0561489b0b5688ca6ec95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_planet: {fileID: 0}
-  m_deathParticles: {fileID: 0}
-  m_alertDistance: 15
-  m_playerDistance: 0.03
+  m_alertDistance: 25
+  m_playerDistance: 5.5
   m_timerForNewPath: 1
   m_mobile: 1
 --- !u!135 &5933255105622761620
@@ -209,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db484b264da109b489d02eddfb068df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GRAVITY_FORCE: 800
 --- !u!135 &1169150940004877058
 SphereCollider:
   m_ObjectHideFlags: 0

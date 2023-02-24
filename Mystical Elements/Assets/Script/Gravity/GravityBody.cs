@@ -2,10 +2,11 @@
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
-    private static float GRAVITY_FORCE = 800;
+    [SerializeField] public float GRAVITY_FORCE = 800;
     
     public Vector3 GravityDirection
     {
