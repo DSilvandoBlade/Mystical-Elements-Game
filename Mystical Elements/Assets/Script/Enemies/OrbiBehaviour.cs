@@ -9,6 +9,7 @@ public class OrbiBehaviour : MonoBehaviour
     private EnemyBase m_base;
     private Animator m_animator;
     private float m_timer;
+    private float m_attackTimer;
     private float m_distance;
     #endregion
 
@@ -19,6 +20,11 @@ public class OrbiBehaviour : MonoBehaviour
     [SerializeField] private float m_evadeDistance;
     [SerializeField] private float m_timerForNewPath;
     [SerializeField] private bool m_mobile;
+
+
+    [Header("Attack Values")]
+    [SerializeField] private float m_attackMinCooldown = 1;
+    [SerializeField] private float m_attackMaxCooldown = 2;
     #endregion
 
     #region Default Functions
@@ -71,26 +77,29 @@ public class OrbiBehaviour : MonoBehaviour
 
             if (Evade())
             {
-                speed = -m_base.Speed * 2f;
+                speed = -m_base.Speed * 1.75f;
             }
 
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             m_animator.SetBool("Moving", true);
-            m_animator.SetBool("Attacking", false);
         }
 
         else if (m_mobile && InRange())
         {
-            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+            if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("Stun"))
             {
-                m_animator.SetBool("Moving", false);
-                m_animator.SetBool("Attacking", false);
-            }
+                if (m_attackTimer <= 0)
+                {
+                    m_animator.SetTrigger("Attack");
+                    m_attackTimer = Random.Range(m_attackMinCooldown, m_attackMaxCooldown);
+                }
 
-            else
-            {
-                m_animator.SetBool("Moving", false);
-                m_animator.SetBool("Attacking", true);
+                else
+                {
+                    m_attackTimer -= Time.deltaTime;
+                }
+
+                Debug.Log(m_attackTimer);
             }
         }
 
