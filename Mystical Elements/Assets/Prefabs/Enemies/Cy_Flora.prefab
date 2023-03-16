@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 4985185759513622302}
   - component: {fileID: 2594928352368485705}
   m_Layer: 0
-  m_Name: Pauk_Flora
+  m_Name: Cy_Flora
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

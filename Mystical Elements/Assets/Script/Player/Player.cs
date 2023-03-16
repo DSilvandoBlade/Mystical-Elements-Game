@@ -380,7 +380,7 @@ public class Player : MonoBehaviour
 
     private void ProjectileShoot(bool stun)
     {
-        GameObject projectile = GameObject.Instantiate(m_projectile, m_projectilePivot.position, transform.rotation);
+        GameObject projectile = GameObject.Instantiate(m_projectile, m_projectilePivot.position, m_projectilePivot.rotation);
 
         m_characterAnim.SetBool("LargeShot", stun);
 
@@ -388,7 +388,6 @@ public class Player : MonoBehaviour
         projectile.GetComponent<PlayerCombat>().Attack = m_projectileTrueDamage;
         projectile.GetComponent<PlayerProjectile>().Speed = m_projectileSpeed;
 
-        projectile.GetComponent<Rigidbody>().velocity = m_graphicsTransform.forward * m_projectileSpeed;
         Destroy(projectile, 5f);
 
         m_isCharging = false;

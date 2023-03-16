@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 5968893612477968787}
   - component: {fileID: 1169150940004877058}
   m_Layer: 0
-  m_Name: Pauk_Frost
+  m_Name: Cy_Frost
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

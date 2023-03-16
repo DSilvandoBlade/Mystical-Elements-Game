@@ -1052,10 +1052,10 @@ MonoBehaviour:
   m_projectileSpeed: 30
   m_projectileCooldown: 1
   m_chargeMax: 3
-  m_projectileDamage: 5
-  m_projectileDamageIncreaseRate: 2
+  m_projectileDamage: 20
+  m_projectileDamageIncreaseRate: 15
   m_projectileSize: 1
-  m_projectileSizeIncreaseRate: 1.5
+  m_projectileSizeIncreaseRate: 1.6
   m_graphicsTransform: {fileID: 4312998546411414576}
   m_graphicRotationSpeed: 10000
   m_hatMesh: {fileID: 7959384634497559612}
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_camBrain: {fileID: 0}
   m_camShakeIntensity: 2
   m_camShakeTime: 0.125
-  m_fieldOfViewIncrease: 10
+  m_fieldOfViewIncrease: 5
 --- !u!114 &561226684266045283
 MonoBehaviour:
   m_ObjectHideFlags: 0

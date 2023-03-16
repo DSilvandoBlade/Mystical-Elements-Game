@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 3905024623294589647}
   - component: {fileID: 4922039131069561356}
   m_Layer: 0
-  m_Name: Pauk_Charge
+  m_Name: Cy_Charge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -42,9 +42,13 @@ public class PlayerProjectile : MonoBehaviour
 
     private void Update()
     {
-        /*
-        transform.rotation = Quaternion.LookRotation(transform.position - m_closestEnemy.position);
-        m_rigidbody.MovePosition(m_closestEnemy.position * m_speed * Time.deltaTime);*/
+        if (m_closestEnemy != null)
+        {
+            Quaternion toRot = Quaternion.LookRotation(-transform.position - -m_closestEnemy.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRot, 5 * Time.deltaTime);
+        }
+
+        m_rigidbody.velocity = transform.forward * m_speed;
     }
     #endregion
 
