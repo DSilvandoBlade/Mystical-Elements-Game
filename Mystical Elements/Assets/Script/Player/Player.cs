@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
         //Visual
         FieldOfView();
         Animation();
+        MobileTouch();
 
         if (m_zDirection != 0 || m_xDirection != 0)
         {
@@ -236,6 +237,19 @@ public class Player : MonoBehaviour
     private bool IsSprinting()
     {
         return (m_playerInput.actions["Shift"].ReadValue<float>() != 0);
+    }
+    #endregion
+
+    #region Camera Movement
+
+    private void MobileTouch()
+    {
+        Debug.Log(m_playerInput.actions["Swipe"].ReadValue<float>());
+
+        if (m_playerInput.actions["Swipe"].ReadValue<float>() != 0)
+        {
+            Debug.Log("DOING IT");
+        }
     }
     #endregion
 

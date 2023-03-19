@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Swipe",
+                    "type": "PassThrough",
+                    "id": "88572348-4958-4a19-8daa-c7c99fe5cd45",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -324,6 +333,17 @@
                     "action": "Range",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b83c515-a0c6-4c36-823d-9624389bee97",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -410,6 +430,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Flora",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Touch",
+            "id": "ea7ce219-5d9e-4d83-a22f-849d891b6ef3",
+            "actions": [
+                {
+                    "name": "Touch Input",
+                    "type": "PassThrough",
+                    "id": "ef01163a-e435-4ea1-b743-798f88874d81",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b87fd17e-7f69-44e0-af90-97690b9711fe",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
