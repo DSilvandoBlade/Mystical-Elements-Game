@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
         //Visual
         FieldOfView();
         Animation();
-        MobileTouch();
+        //MobileTouch();
 
         if (m_zDirection != 0 || m_xDirection != 0)
         {
@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
         m_rigidbody.MovePosition(m_rigidbody.position + direction * ((m_maxSpeed * speedMultiply) * Time.fixedDeltaTime));
 
         //Local Rotation
-        Quaternion rightDirection = Quaternion.Euler(0f, m_rDirection * (100 * m_turnSpeed * Time.fixedDeltaTime), 0f);
+        Quaternion rightDirection = Quaternion.Euler(0f, m_rDirection * (m_turnSpeed * Time.fixedDeltaTime), 0f);
         Quaternion newRotation = Quaternion.Slerp(m_rigidbody.rotation, m_rigidbody.rotation * rightDirection, Time.fixedDeltaTime * 3f); ;
         m_rigidbody.MoveRotation(newRotation);
     }
@@ -241,7 +241,7 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Camera Movement
-
+    /*
     private void MobileTouch()
     {
         Debug.Log(m_playerInput.actions["Swipe"].ReadValue<float>());
@@ -250,7 +250,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("DOING IT");
         }
-    }
+    }*/
     #endregion
 
     #region Health Functions (Add / Remove)

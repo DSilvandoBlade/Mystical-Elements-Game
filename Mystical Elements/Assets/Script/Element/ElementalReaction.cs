@@ -211,6 +211,7 @@ public class ElementalReaction : MonoBehaviour
     }
     #endregion
 
+    #region Burst Function
     private void BurstReaction()
     {
         Collider[] c = Physics.OverlapSphere(transform.position, m_burstRadius, 3);
@@ -224,6 +225,7 @@ public class ElementalReaction : MonoBehaviour
             enemy.GetComponent<Rigidbody>().AddExplosionForce(m_burstForce, transform.position, m_sphereCollider.radius);
         }
     }
+    #endregion
 
     #region Stick Function
     private void StickReaction()

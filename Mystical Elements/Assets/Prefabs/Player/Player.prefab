@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_maxHealth: 100
   m_selectedElement: 1
   m_maxSpeed: 25
-  m_turnSpeed: 20
+  m_turnSpeed: 100
   m_groundCheckObj: {fileID: 4312998545887385696}
   m_groundLayerMask:
     serializedVersion: 2

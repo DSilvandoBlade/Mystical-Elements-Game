@@ -34,12 +34,12 @@
                 },
                 {
                     "name": "Rot",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e4d5195c-41b7-4937-b566-c98104df7c1d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Attack",
@@ -225,70 +225,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Keyboard",
-                    "id": "1d9472a3-636f-43cf-9b2c-c89b69d3bb60",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "05466b71-ce00-4cf7-810d-528e4a2b88f0",
+                    "path": "<Mouse>/delta/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "AxisDeadzone(min=1,max=1000),Clamp(min=-1,max=1)",
                     "groups": "",
                     "action": "Rot",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "938f75c5-0f74-4c21-a70d-b66a3b6ed0d4",
-                    "path": "<Keyboard>/q",
+                    "name": "",
+                    "id": "14236eed-7806-417d-8f69-5c04ff0abd59",
+                    "path": "<Touchscreen>/delta/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Rot",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "c8040b2c-f6e7-45c6-9fe0-f142f85c7a76",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rot",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Controller",
-                    "id": "3f14203a-d55f-4246-adc3-9fe2efd3af56",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rot",
-                    "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "eadd5a12-49fb-42ca-9e5f-c6c317ed7db8",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rot",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "e971ffc7-80aa-4021-a6f1-91da6c183db9",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rot",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
