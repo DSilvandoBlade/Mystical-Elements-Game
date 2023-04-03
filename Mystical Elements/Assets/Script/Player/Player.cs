@@ -124,6 +124,9 @@ public class Player : MonoBehaviour
 
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 30;
+
+        //Cursor.visible = false;
+        //Screen.lockCursor = true;
     }
 
     private void Update()
@@ -174,7 +177,7 @@ public class Player : MonoBehaviour
 
         //Local Rotation
         Quaternion rightDirection = Quaternion.Euler(0f, m_rDirection * (m_turnSpeed * Time.fixedDeltaTime), 0f);
-        Quaternion newRotation = Quaternion.Slerp(m_rigidbody.rotation, m_rigidbody.rotation * rightDirection, Time.fixedDeltaTime * 3f); ;
+        Quaternion newRotation = Quaternion.Slerp(m_rigidbody.rotation, m_rigidbody.rotation * rightDirection, Time.fixedDeltaTime * 3f);
         m_rigidbody.MoveRotation(newRotation);
     }
 

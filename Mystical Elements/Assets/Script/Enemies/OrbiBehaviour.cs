@@ -98,8 +98,6 @@ public class OrbiBehaviour : MonoBehaviour
                 {
                     m_attackTimer -= Time.deltaTime;
                 }
-
-                Debug.Log(m_attackTimer);
             }
         }
 
