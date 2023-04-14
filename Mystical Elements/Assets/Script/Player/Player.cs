@@ -450,8 +450,6 @@ public class Player : MonoBehaviour
     {
         m_hatMesh.materials = mat;
         m_robeMesh.materials = mat;
-
-        Debug.Log("Material changed to " + mat);
     }
 
     private void GraphicsRotation()

@@ -42,5 +42,10 @@ public class PlayerCombat : MonoBehaviour
         {
             other.GetComponent<EnemyBase>().TakeDamage(m_attack, m_doesStun, m_player.SelectedElement, false);
         }
+
+        if (other.tag == "Activator")
+        {
+            other.GetComponent<ElementalRod>().Activate(m_player.SelectedElement);
+        }
     }
 }
