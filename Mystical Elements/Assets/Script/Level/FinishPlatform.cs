@@ -5,15 +5,24 @@ using UnityEngine;
 public class FinishPlatform : MonoBehaviour
 {
     [SerializeField] private ElementalRod[] m_rods;
+    [SerializeField] private GameObject m_ui;
 
     private bool m_levelFinishActivate = false;
+    private Animator m_animator;
+
+    private void Start()
+    {
+        m_animator = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && m_levelFinishActivate)
         {
             Debug.Log("Game Finished");
-            Debug.Break();
+            m_animator.SetTrigger("Win");
+            Destroy(FindObjectOfType<Player>().gameObject);
+            m_ui.SetActive(false);
         }
     }
 
@@ -35,6 +44,7 @@ public class FinishPlatform : MonoBehaviour
             }
         }
 
+        m_animator.SetTrigger("Ready");
         return true;
     }
 }
