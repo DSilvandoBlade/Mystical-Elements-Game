@@ -130,6 +130,8 @@ public class EnemyBase : MonoBehaviour
         ragdoll.GetComponent<Rigidbody>().AddForce(dir * -5000);
         Destroy(ragdoll, 5f);
 
+        FindObjectOfType<GradeSystem>().EnemiesDefeated++;
+
         if (m_isChildObject)
         {
             Destroy(m_parent);
