@@ -226,28 +226,6 @@
                 },
                 {
                     "name": "",
-                    "id": "05466b71-ce00-4cf7-810d-528e4a2b88f0",
-                    "path": "<Mouse>/delta/x",
-                    "interactions": "",
-                    "processors": "AxisDeadzone(min=1,max=1000),Clamp(min=-1,max=1)",
-                    "groups": "",
-                    "action": "Rot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "14236eed-7806-417d-8f69-5c04ff0abd59",
-                    "path": "<Touchscreen>/delta/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "97b84145-693c-4456-808d-2c79cb9369c3",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -300,6 +278,39 @@
                     "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "18eb3ad9-4433-4e15-9756-9f211645ee30",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rot",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "11033452-d73b-4cf5-827e-661f33bf59ed",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rot",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "02ae7b1e-c17d-4650-9cd9-d83dd76ad51b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rot",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

@@ -18,6 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstLevel.unity
     guid: e52c31fad67393140afa80292375b159
   - enabled: 1
-    path: Assets/Scenes/Levels/Frosted Planet.unity
+    path: Assets/Scenes/Frosted Planet.unity
     guid: de8831c34d843394192392992a851814
   m_configObjects: {}

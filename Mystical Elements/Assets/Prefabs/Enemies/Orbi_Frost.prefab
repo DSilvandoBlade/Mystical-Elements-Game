@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 2241833970742118242}
   - component: {fileID: 2241833970742118241}
   - component: {fileID: 2241833970742118240}
+  - component: {fileID: 3673583792417157359}
   m_Layer: 0
   m_Name: Orbi_Frost
   m_TagString: Enemy
@@ -380,6 +381,28 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: -2.16, z: 0}
+--- !u!195 &3673583792417157359
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241833970742118246}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.36
+  m_Speed: 8
+  m_Acceleration: 80
+  avoidancePriority: 50
+  m_AngularSpeed: 800
+  m_StoppingDistance: 4
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5.73
+  m_BaseOffset: 4.42
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2241833970843700496
 GameObject:
   m_ObjectHideFlags: 0

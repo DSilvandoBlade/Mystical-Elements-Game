@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class OrbiBehaviour : MonoBehaviour
 {
@@ -8,15 +9,18 @@ public class OrbiBehaviour : MonoBehaviour
     private GameObject m_player;
     private EnemyBase m_base;
     private Animator m_animator;
+    private NavMeshAgent m_agent;
     private float m_timer;
     private float m_attackTimer;
     private float m_distance;
+    private bool m_knockedback = false;
+    private bool m_dead = false;
+    private Vector3 m_knockbackDirection;
     #endregion
 
     #region Serialized Variables
     [Header("Tracking Values")]
     [SerializeField] private float m_alertDistance;
-    [SerializeField] private float m_playerDistance;
     [SerializeField] private float m_evadeDistance;
     [SerializeField] private float m_timerForNewPath;
     [SerializeField] private bool m_mobile;
@@ -33,6 +37,7 @@ public class OrbiBehaviour : MonoBehaviour
         m_timer = m_timerForNewPath;
         m_player = FindObjectOfType<Player>().gameObject;
         m_animator = GetComponentInChildren<Animator>();
+        m_agent = GetComponent<NavMeshAgent>();
         m_base = GetComponent<EnemyBase>();
     }
 
@@ -40,11 +45,72 @@ public class OrbiBehaviour : MonoBehaviour
     {
         m_distance = Vector3.Distance(m_player.transform.position, transform.position);
 
-        Movement();
+        if (!m_knockedback && !m_dead && m_mobile)
+        {
+            NavMeshMovement();
+        }
+
+        else if (m_knockedback)
+        {
+            m_agent.velocity = m_knockbackDirection * 8;
+        }
     }
     #endregion
 
     #region Movement Functions
+    private void NavMeshMovement()
+    {
+        m_animator.SetBool("Moving", !InRange() && Alerted());
+
+        if (InRange())
+        {
+            Attack();
+        }
+
+        //ROTATIONS TO PLAYER
+        Vector3 point = m_player.transform.position;
+        Vector3 v = point - transform.position;
+        Vector3 d = Vector3.Project(v, transform.up.normalized);
+        Vector3 projectedPoint = point - d;
+
+        float angle = Vector3.Angle(-transform.forward, (transform.position - projectedPoint));
+        float sign = Mathf.Sign(Vector3.Dot((transform.position - projectedPoint), -transform.right));
+        float finalAngle = angle * sign;
+
+        transform.Rotate(0, finalAngle, 0);
+
+
+        //Move Forward
+        if (Alerted() && !InRange() && !Evade())
+        {
+            m_agent.SetDestination(m_player.transform.position);
+
+            m_agent.speed = m_base.Speed * 1.5f;
+            m_agent.angularSpeed = 0; //Keeps the enemy facing forwad rther than spinning
+        }
+
+        else if (Evade())
+        {
+            m_agent.speed = m_base.Speed * 1.5f;
+            m_agent.angularSpeed = 0; //Keeps the enemy facing forwad rther than spinning
+        }
+    }
+
+    private void Attack()
+    {
+        if (m_attackTimer <= 0)
+        {
+            m_animator.SetTrigger("Attack");
+            m_attackTimer = Random.Range(m_attackMinCooldown, m_attackMaxCooldown);
+        }
+
+        else
+        {
+            m_attackTimer -= Time.deltaTime;
+        }
+    }
+
+    /*
     private void Movement()
     {
         if (Alerted())
@@ -102,7 +168,7 @@ public class OrbiBehaviour : MonoBehaviour
         }
 
         m_timer -= 1 * Time.deltaTime;
-    }
+    }*/
 
     private bool Alerted()
     {
@@ -116,7 +182,7 @@ public class OrbiBehaviour : MonoBehaviour
 
     private bool InRange()
     {
-        if (m_distance < m_playerDistance && m_distance > m_evadeDistance)
+        if (m_distance < m_agent.stoppingDistance && m_distance > m_evadeDistance)
         {
             return true;
         }

@@ -20,6 +20,12 @@ public class Player : MonoBehaviour
         get { return m_meleeDamage; }
         set { m_meleeDamage = value; }
     }
+
+    [HideInInspector] public bool Mobile
+    {
+        get { return m_mobile; }
+        set { m_mobile = value; }
+    }
     #endregion
 
     #region Private Variables
@@ -29,6 +35,8 @@ public class Player : MonoBehaviour
     private GravityBody m_gravityBody;
     private Animator m_characterAnim;
     private Vector3 m_direction;
+
+    private bool m_mobile = true;
 
     private float m_xDirection;
     private float m_zDirection;
@@ -101,6 +109,7 @@ public class Player : MonoBehaviour
     [Header("HUD References")]
     [SerializeField] private Image m_healthBar;
     [SerializeField] private Image m_energyBar;
+    [SerializeField] private Animator m_hudAnim;
     [Space(10)]
 
     [Header("Cam")]
@@ -135,26 +144,32 @@ public class Player : MonoBehaviour
         m_zDirection = m_playerInput.actions["Move"].ReadValue<Vector2>().y * Time.deltaTime * m_maxSpeed;
         m_rDirection = m_playerInput.actions["Rot"].ReadValue<float>();
 
-        //Visual
-        FieldOfView();
-        Animation();
-        //MobileTouch();
-
         if (m_zDirection != 0 || m_xDirection != 0)
         {
             GraphicsRotation();
         }
 
-        //Combat
-        ProjectileCharging();
-        Melee();
+        if (m_mobile)
+        {
+            //Combat
+            ProjectileCharging();
+            Melee();
+
+            //Animation
+            FieldOfView();
+            Animation();
+        }
     }
 
     private void FixedUpdate()
     {
         //Moving Controls
-        Movement();
-        Jump();
+
+        if (m_mobile)
+        {
+            Movement();
+            Jump();
+        }
     }
     #endregion
 
@@ -334,7 +349,9 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Death()
     {
-        //TO DO: Death animation that will show progress
+        m_mobile = false;
+        m_characterAnim.Play("Death");
+        m_hudAnim.Play("Death");
     }
 
     #endregion
