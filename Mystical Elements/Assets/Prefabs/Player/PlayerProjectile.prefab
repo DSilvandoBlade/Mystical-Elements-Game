@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5322302399037302012}
   - component: {fileID: 5322302399037302015}
   - component: {fileID: 1852963446459342407}
-  - component: {fileID: 5322302399037301984}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -35,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5322302399037301986
 MeshFilter:
@@ -126,18 +125,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b6a6d80419db614bb0deb86432fc3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5322302399037301984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322302399037302014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865149a42fd8b344bbcf6782ceaf1516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_attack: 0

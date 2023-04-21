@@ -11,6 +11,31 @@ public class PlayerProjectile : MonoBehaviour
         get { return m_speed; }
         set { m_speed = value; }
     }
+
+    [HideInInspector] public float Attack
+    {
+        get { return m_attack; }
+        set { m_attack = value; }
+    }
+
+    [HideInInspector] public bool DoesStun
+    {
+        get { return m_doesStun; }
+        set { m_doesStun = value; }
+    }
+
+    [HideInInspector] public Element ProjectileElement
+    {
+        get { return m_projectileElement; }
+        set { m_projectileElement = value; }
+    }
+    #endregion
+
+
+    #region Serialize Variables
+    [Header("Attack Attributes")]
+    [SerializeField] private float m_attack;
+    [SerializeField] private bool m_doesStun;
     #endregion
 
     #region Private Variables
@@ -58,8 +83,13 @@ public class PlayerProjectile : MonoBehaviour
         if (other.tag == "Enemy")
         {
             m_vfxManager.SummonHitEffect(transform.position, m_projectileElement);
-
+            other.GetComponent<EnemyBase>().TakeDamage(m_attack, m_doesStun, m_projectileElement, false);
             Destroy(gameObject, 0.01f);
+        }
+
+        if (other.tag == "Activator")
+        {
+            other.GetComponent<ElementalRod>().Activate(m_player.SelectedElement);
         }
     }
     #endregion

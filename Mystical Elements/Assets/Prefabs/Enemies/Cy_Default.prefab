@@ -208,6 +208,7 @@ MonoBehaviour:
   m_ragDoll: {fileID: 7765718717876261816, guid: 4187ba624065c17419e20696bd7728ad, type: 3}
   m_isChildObject: 0
   m_parent: {fileID: 0}
+  m_pointsGivenOnDeath: 5
 --- !u!114 &6093247959465553959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,8 +297,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 4.45
-  m_BaseOffset: 1.35
+  m_Height: 6
+  m_BaseOffset: 3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &2056534173051574640

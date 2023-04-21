@@ -36,6 +36,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private GameObject m_ragDoll;
     [SerializeField] private bool m_isChildObject;
     [SerializeField] private GameObject m_parent;
+    [SerializeField] private int m_pointsGivenOnDeath;
     #endregion
 
     #region Public Variables
@@ -130,7 +131,7 @@ public class EnemyBase : MonoBehaviour
         ragdoll.GetComponent<Rigidbody>().AddForce(dir * -5000);
         Destroy(ragdoll, 5f);
 
-        FindObjectOfType<GradeSystem>().EnemiesDefeated++;
+        FindObjectOfType<LevelManager>().AddPoints(m_pointsGivenOnDeath);
 
         if (m_isChildObject)
         {

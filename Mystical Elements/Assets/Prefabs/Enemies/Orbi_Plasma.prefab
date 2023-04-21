@@ -389,6 +389,7 @@ MonoBehaviour:
   m_ragDoll: {fileID: 3909118010258833082, guid: a29451543d91e0349a0c9d40ea63f897, type: 3}
   m_isChildObject: 0
   m_parent: {fileID: 0}
+  m_pointsGivenOnDeath: 5
 --- !u!114 &4961397488965438837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,12 +403,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_alertDistance: 20
-  m_playerDistance: 9.5
-  m_evadeDistance: 8
   m_timerForNewPath: 1
   m_mobile: 1
-  m_attackMinCooldown: 2.5
-  m_attackMaxCooldown: 4
+  m_attackMinCooldown: 1
+  m_attackMaxCooldown: 2
 --- !u!54 &2370001879594685769
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -460,7 +459,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
+  m_Radius: 1
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: -2.16, z: 0}
@@ -478,7 +477,7 @@ NavMeshAgent:
   m_Acceleration: 80
   avoidancePriority: 50
   m_AngularSpeed: 800
-  m_StoppingDistance: 4
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

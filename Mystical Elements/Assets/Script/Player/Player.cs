@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private CapsuleCollider m_collider;
     private GravityBody m_gravityBody;
     private Animator m_characterAnim;
+    private Transform m_boundSpawnPoint;
     private Vector3 m_direction;
 
     private bool m_mobile = true;
@@ -279,7 +280,7 @@ public class Player : MonoBehaviour
     /// <param name="healthToAdd"> Amount of healing recieved </param>
     public void HealPlayer(float healthToAdd)
     {
-        m_health = Mathf.Clamp(m_health + healthToAdd, m_maxHealth, 0f);
+        m_health = Mathf.Clamp(m_health + healthToAdd, 0f, m_maxHealth);
 
         m_healthBar.fillAmount = m_health / m_maxHealth;
         //TO DO: Healing Animation / Particle effect
@@ -310,7 +311,7 @@ public class Player : MonoBehaviour
 
         StartScreenShake(stunPlayer);
 
-        //TO DO: Damage Animation / Particle effect
+        m_characterAnim.SetTrigger("Hurt");
     }
 
     /// <summary>
@@ -347,7 +348,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Function that kills off the player and ends the game
     /// </summary>
-    private void Death()
+    public void Death()
     {
         m_mobile = false;
         m_characterAnim.Play("Death");
@@ -392,8 +393,6 @@ public class Player : MonoBehaviour
 
         else if ((m_playerInput.actions["Range"].WasReleasedThisFrame() && m_isCharging) || m_chargeTimer >= m_chargeMax)
         {
-            Debug.Log("WAS RELEASED!");
-
             m_projectileTrueDamage += m_projectileDamage;
             m_projectileTrueSize += m_projectileSize;
 
@@ -419,8 +418,12 @@ public class Player : MonoBehaviour
         m_characterAnim.SetBool("LargeShot", stun);
 
         projectile.transform.localScale = new Vector3(m_projectileTrueSize, m_projectileTrueSize, m_projectileTrueSize);
-        projectile.GetComponent<PlayerCombat>().Attack = m_projectileTrueDamage;
-        projectile.GetComponent<PlayerProjectile>().Speed = m_projectileSpeed;
+
+        PlayerProjectile proj = projectile.GetComponent<PlayerProjectile>();
+
+        proj.Attack = Mathf.Clamp(m_projectileTrueDamage, 0, 200);
+        proj.Speed = m_projectileSpeed;
+        proj.ProjectileElement = m_selectedElement;
 
         Destroy(projectile, 5f);
 
@@ -484,6 +487,24 @@ public class Player : MonoBehaviour
         m_selectedElement = element;
 
         //TO DO: Element Switch animation
+    }
+
+    #endregion
+
+    #region Out of Bound Function
+
+    public void OutOfBound(Transform spawnPoint)
+    {
+        m_hudAnim.SetTrigger("Fade");
+        m_boundSpawnPoint = spawnPoint;
+        m_mobile = false;
+        Invoke("SpawnBackAtPoint", 1f);
+    }
+
+    private void SpawnBackAtPoint()
+    {
+        transform.position = m_boundSpawnPoint.position;
+        m_mobile = true;
     }
 
     #endregion

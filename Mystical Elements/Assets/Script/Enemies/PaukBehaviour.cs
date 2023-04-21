@@ -53,7 +53,7 @@ public class PaukBehaviour : MonoBehaviour
     #region Movement Functions
     private void NavMeshMovement()
     {
-        m_animator.SetBool("Moving", !InRange() && Alerted());
+        m_animator.SetBool("Moving", !InRange() && Alerted() && PathPossible());
         m_animator.SetBool("Attacking", InRange());
 
         //ROTATIONS TO PLAYER
@@ -69,10 +69,31 @@ public class PaukBehaviour : MonoBehaviour
         transform.Rotate(0, finalAngle, 0);
 
         //Move Forward
-        if (Alerted() && !InRange() && !m_knockedback)
+        if (Alerted() && !InRange() && !m_knockedback && PathPossible())
         {
             m_agent.SetDestination(m_player.transform.position);
         }
+    }
+
+    private bool PathPossible()
+    {
+        NavMeshPath navMeshPath = new NavMeshPath();
+        if (m_agent.CalculatePath(m_player.transform.position, navMeshPath))
+        {
+            switch (navMeshPath.status)
+            {
+                case NavMeshPathStatus.PathComplete:
+                    return true;
+
+                case NavMeshPathStatus.PathPartial:
+                    return false;
+
+                case NavMeshPathStatus.PathInvalid:
+                    return false;
+            }
+        }
+
+        return false;
     }
 
     private bool Alerted()

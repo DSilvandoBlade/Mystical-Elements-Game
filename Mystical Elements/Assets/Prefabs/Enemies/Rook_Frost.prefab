@@ -570,11 +570,12 @@ MonoBehaviour:
   m_enemyType: 2
   m_elementalReactions: {fileID: 5210158213623395931, guid: 1490aabfe6658474ba1b7d2554f64955, type: 3}
   m_speed: 0
-  m_maxHealth: 350
+  m_maxHealth: 200
   m_bodyElement: 2
   m_ragDoll: {fileID: 7952314711556294250, guid: a7661518ddbb43743b6a0dec30d2eb67, type: 3}
   m_isChildObject: 1
   m_parent: {fileID: 7481592387205724322}
+  m_pointsGivenOnDeath: 10
 --- !u!114 &8878762101538396469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bcdfc027c5a7043b2335ed51062b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_alertDistance: 20
+  m_alertDistance: 50
   m_projectilePoint: {fileID: 8878762101538396465}
   m_projectileAsset: {fileID: 6637127458783421688, guid: 0b6767148f9acf749a2eb31c366512eb, type: 3}
   m_projectileSpeed: 25

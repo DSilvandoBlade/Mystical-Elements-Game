@@ -208,11 +208,12 @@ MonoBehaviour:
   m_enemyType: 2
   m_elementalReactions: {fileID: 5210158213623395931, guid: 1490aabfe6658474ba1b7d2554f64955, type: 3}
   m_speed: 0
-  m_maxHealth: 350
+  m_maxHealth: 200
   m_bodyElement: 1
   m_ragDoll: {fileID: 7952314711556294250, guid: a7661518ddbb43743b6a0dec30d2eb67, type: 3}
   m_isChildObject: 1
   m_parent: {fileID: 6406342271259184028}
+  m_pointsGivenOnDeath: 10
 --- !u!114 &4900938869948901899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bcdfc027c5a7043b2335ed51062b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_alertDistance: 20
+  m_alertDistance: 50
   m_projectilePoint: {fileID: 4900938869948901903}
   m_projectileAsset: {fileID: 6637127458783421688, guid: 9140f5be0d2257f42a344345471afe15, type: 3}
   m_projectileSpeed: 25
@@ -1005,7 +1006,6 @@ MonoBehaviour:
   tripodSize: 1
   boneColor: {r: 0, g: 0, b: 1, a: 0.5}
   m_Transforms:
-  - {fileID: 3463497631455040201}
   - {fileID: 8629238465296492119}
   - {fileID: 766671638740589381}
   - {fileID: 1609312579022823514}
