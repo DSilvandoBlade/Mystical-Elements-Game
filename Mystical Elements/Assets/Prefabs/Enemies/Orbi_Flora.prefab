@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5227612922507413811}
   - component: {fileID: 5227612922507413808}
   - component: {fileID: 5227612922507413809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5227612922617100750}
   - component: {fileID: 5227612922617100753}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 5227612922689729321}
   - component: {fileID: 5227612922689729323}
   - component: {fileID: 5227612922689729320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 5227612922741262688}
   - component: {fileID: 5227612922741262690}
   - component: {fileID: 5227612922741262691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 5227612924302927957}
   - component: {fileID: 5227612924302927954}
   - component: {fileID: 3393275250442252406}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Orbi_Flora
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 5227612924413323212}
   - component: {fileID: 5227612924413323214}
   - component: {fileID: 5227612924413323215}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,6 +560,18 @@ PrefabInstance:
     - target: {fileID: 3316273436699257901, guid: 8a36c7aa123f6ae41b34e018b3d45353, type: 3}
       propertyPath: m_Name
       value: FloraTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273436699257901, guid: 8a36c7aa123f6ae41b34e018b3d45353, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602115178163477599, guid: 8a36c7aa123f6ae41b34e018b3d45353, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192496574299540220, guid: 8a36c7aa123f6ae41b34e018b3d45353, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8859487347957670494, guid: 8a36c7aa123f6ae41b34e018b3d45353, type: 3}
       propertyPath: m_RootOrder

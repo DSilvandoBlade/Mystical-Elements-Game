@@ -24,7 +24,6 @@ public class OutOfBoundsBox : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            m_gradeSystem.TimesFellOff++;
             m_player.OutOfBound(m_spawnTransform);
         }
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303834070899244934}
   - component: {fileID: 8697195571832761402}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RookTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1609312579022823514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4900938869948901897}
   - component: {fileID: 4900938869948901902}
   - component: {fileID: 4900938869948901899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint8
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021966641220079113}
   - component: {fileID: 2021966641220079112}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Aim (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021966641255310523}
   - component: {fileID: 2021966641255310522}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rig 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021966641467059106}
   - component: {fileID: 2021966641467059117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021966641867987480}
   - component: {fileID: 2021966641867987483}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Aim (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2021966642467157265}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021966643149470955}
   - component: {fileID: 2021966643149470954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Aim (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6669776416807279811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3749637990465485316}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629238465296492119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,7 +765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 766671638740589381}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 5269447325374229706}
   - component: {fileID: 2021966641288872066}
   - component: {fileID: 2021966641288872067}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rook_Plasma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5772677289667035795}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6720783593816147750}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 7685434545826502918}
   - component: {fileID: 7685434545826502919}
   - component: {fileID: 7685434545826502916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 6960068219211801370}
   - component: {fileID: 6285048974425844927}
   - component: {fileID: 8132390385768274037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RookBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

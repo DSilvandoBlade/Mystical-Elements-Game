@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using ElementTree;
 
 public class ElementSwitchHUD : MonoBehaviour
 {
     private Player m_player;
+    private PlayerInput m_inputSystem;
 
     [SerializeField] private Animator m_anim;
 
@@ -25,25 +27,5 @@ public class ElementSwitchHUD : MonoBehaviour
         {
             m_anim.Play("Close");
         }
-    }
-
-    public void SwitchToPlasma()
-    {
-        m_player.SwitchElement(Element.PLASMA);
-    }
-
-    public void SwitchToFrost()
-    {
-        m_player.SwitchElement(Element.FROST);
-    }
-
-    public void SwitchToCharge()
-    {
-        m_player.SwitchElement(Element.CHARGE);
-    }
-
-    public void SwitchToFlora()
-    {
-        m_player.SwitchElement(Element.FLORA);
     }
 }

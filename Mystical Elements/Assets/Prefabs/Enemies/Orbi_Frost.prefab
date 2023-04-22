@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2241833970668540402}
   - component: {fileID: 2241833970668540412}
   - component: {fileID: 2241833970668540403}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2241833970672765676}
   - component: {fileID: 2241833970672765667}
   - component: {fileID: 2241833970672765666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 2241833970681531306}
   - component: {fileID: 2241833970681531316}
   - component: {fileID: 2241833970681531307}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 2241833970742118241}
   - component: {fileID: 2241833970742118240}
   - component: {fileID: 3673583792417157359}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Orbi_Frost
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ Transform:
   - {fileID: 2241833970843700497}
   - {fileID: 4085770691262549124}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2241833970742118253
 MonoBehaviour:
@@ -412,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2241833970843700497}
   - component: {fileID: 2241833970843700498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 2241833970890981615}
   - component: {fileID: 2241833970890981609}
   - component: {fileID: 2241833970890981608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,6 +575,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrostTrail
       objectReference: {fileID: 0}
+    - target: {fileID: 3316273436699257901, guid: 9893cb98deaf39e488bf5d820ae07318, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602115178163477599, guid: 9893cb98deaf39e488bf5d820ae07318, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7585067272586926273, guid: 9893cb98deaf39e488bf5d820ae07318, type: 3}
       propertyPath: ShapeModule.donutRadius
       value: 0.74
@@ -590,6 +598,10 @@ PrefabInstance:
     - target: {fileID: 7585067272586926273, guid: 9893cb98deaf39e488bf5d820ae07318, type: 3}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192496574299540220, guid: 9893cb98deaf39e488bf5d820ae07318, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8859487347957670494, guid: 9893cb98deaf39e488bf5d820ae07318, type: 3}
       propertyPath: m_RootOrder

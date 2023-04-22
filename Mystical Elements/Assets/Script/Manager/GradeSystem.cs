@@ -6,45 +6,30 @@ using TMPro;
 
 public class GradeSystem : MonoBehaviour
 {
-    [HideInInspector] public int TimesFellOff
-    {
-        get { return m_timesFellOff; }
-        set { m_timesFellOff = value; }
-    }
-
-    [HideInInspector] public int EnemiesDefeated
-    {
-        get { return m_enemiesDefeated; }
-        set { m_enemiesDefeated = value; }
-    }
-
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private Image m_gradeImage;
+    [SerializeField] private TextMeshProUGUI m_gradeCommentText;
     [SerializeField] private TextMeshProUGUI m_gradeText;
 
     private int m_maxScore;
-
-    private int m_timesFellOff;
-    [SerializeField] private int m_timesFellScoreDecreasePerUnit;
-    private int m_enemiesDefeated;
-    [SerializeField] private int m_enemiesDefeatedScoreIncreasePerUnit;
+    private LevelManager m_manager;
 
     public Grade[] m_grades;
 
+    private void Start()
+    {
+        m_manager = FindObjectOfType<LevelManager>();
+    }
+
     public void CalculateAndDisplayGrade()
     {
-        m_maxScore = (m_enemiesDefeated * m_enemiesDefeatedScoreIncreasePerUnit) - (m_timesFellOff * m_enemiesDefeatedScoreIncreasePerUnit);
-
-        if (m_maxScore < 0)
-        {
-            m_maxScore = 0;
-        }
+        m_maxScore = m_manager.TotalPoints;
 
         Grade chosenGrade = new Grade();
 
         foreach (Grade grade in m_grades)
         {
-            if (grade.GradeScore >= m_maxScore)
+            if (grade.GradeScore <= m_maxScore)
             {
                 chosenGrade = grade;
                 break;
@@ -54,14 +39,17 @@ public class GradeSystem : MonoBehaviour
         m_scoreText.text = ("Score: ") + m_maxScore.ToString();
 
         m_gradeImage.sprite = chosenGrade.GradeSprite;
-        m_gradeText.text = chosenGrade.GradeLetter;
+        m_gradeText.text = chosenGrade.TheGrade;
+        m_gradeCommentText.text = chosenGrade.GradeComment;
+        
     }
 }
 
 [System.Serializable]
 public class Grade
 {
-    [SerializeField] public string GradeLetter;
+    [SerializeField] public string TheGrade;
+    [SerializeField] public string GradeComment;
     [SerializeField] public int GradeScore;
     [SerializeField] public Sprite GradeSprite;
 }

@@ -8,11 +8,13 @@ public class FinishPlatform : MonoBehaviour
     [SerializeField] private GameObject m_ui;
 
     private bool m_levelFinishActivate = false;
+    private EnemyBase[] m_allEnemies;
     private Animator m_animator;
 
     private void Start()
     {
         m_animator = GetComponent<Animator>();
+        m_allEnemies = FindObjectsOfType<EnemyBase>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +23,13 @@ public class FinishPlatform : MonoBehaviour
         {
             Debug.Log("Game Finished");
             m_animator.SetTrigger("Win");
-            Destroy(FindObjectOfType<Player>().gameObject);
+            
+            foreach (EnemyBase enemy in m_allEnemies)
+            {
+                Destroy(enemy.gameObject);
+            }
+
+            FindObjectOfType<Player>().gameObject.SetActive(false);
             m_ui.SetActive(false);
         }
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 707854016696538693}
   - component: {fileID: 4502780418529483232}
   - component: {fileID: 1844753629728746794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Small Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4502780418529483232
 MeshFilter:

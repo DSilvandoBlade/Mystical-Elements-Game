@@ -350,6 +350,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Death()
     {
+        m_health = 0f;
         m_mobile = false;
         m_characterAnim.Play("Death");
         m_hudAnim.Play("Death");

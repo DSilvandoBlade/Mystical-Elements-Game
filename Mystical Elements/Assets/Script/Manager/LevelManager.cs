@@ -5,6 +5,12 @@ using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
+    [HideInInspector] public int TotalPoints
+    {
+        get { return m_totalPoints; }
+        set { m_totalPoints = value; }
+    }
+
     [SerializeField] private TextMeshProUGUI m_textPoints;
     [SerializeField] private TextMeshProUGUI m_timerText;
     [SerializeField] private float m_maxSeconds;
