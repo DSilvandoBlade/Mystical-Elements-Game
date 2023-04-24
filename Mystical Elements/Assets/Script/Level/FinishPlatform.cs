@@ -26,7 +26,10 @@ public class FinishPlatform : MonoBehaviour
             
             foreach (EnemyBase enemy in m_allEnemies)
             {
-                Destroy(enemy.gameObject);
+                if (enemy != null)
+                {
+                    Destroy(enemy.gameObject);
+                }
             }
 
             FindObjectOfType<Player>().gameObject.SetActive(false);
