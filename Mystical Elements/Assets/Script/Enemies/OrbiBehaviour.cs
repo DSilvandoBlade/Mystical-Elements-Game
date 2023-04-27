@@ -57,8 +57,6 @@ public class OrbiBehaviour : MonoBehaviour
     #region Movement Functions
     private void NavMeshMovement()
     {
-        Debug.Log("Orbi In Range: " + InRange().ToString());
-
         if (InRange())
         {
             Attack();
