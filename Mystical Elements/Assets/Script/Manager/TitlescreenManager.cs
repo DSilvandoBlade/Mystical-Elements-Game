@@ -1,14 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TitlescreenManager : MonoBehaviour
 {
     [SerializeField] private Button m_goButton;
     [SerializeField] private TextMeshProUGUI m_goButtonText;
+
+    [SerializeField] private GameObject m_loadingScreen;
+    [SerializeField] Image m_loadingBarFill;
 
     private string m_sceneName;
 
@@ -26,9 +28,30 @@ public class TitlescreenManager : MonoBehaviour
         m_sceneName = sceneName;
     }
 
+    IEnumerator LoadScene(string sceneName)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        m_loadingScreen.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+
+            m_loadingBarFill.fillAmount = progressValue;
+
+            yield return null;
+        }
+    }
+
     public void GoToSelectedScene()
     {
-        SceneManager.LoadScene(m_sceneName);
+        if (m_sceneName == null)
+        {
+            return;
+        }
+
+        StartCoroutine(LoadScene(m_sceneName));
     }
 
     public void QuitGame()
