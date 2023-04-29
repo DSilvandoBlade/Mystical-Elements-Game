@@ -10,6 +10,7 @@ public class EnemyBase : MonoBehaviour
     private Player m_player;
     private Rigidbody m_rigidbody;
     private Element m_layerElement;
+    private CharacterSoundController m_soundControl;
     private float m_resShred = 1f;
 
     private enum EnemyType
@@ -59,6 +60,7 @@ public class EnemyBase : MonoBehaviour
         m_animator = GetComponentInChildren<Animator>();
         m_player = FindObjectOfType<Player>();
         m_rigidbody = GetComponent<Rigidbody>();
+        m_soundControl = GetComponentInChildren<CharacterSoundController>();
 
         m_health = m_maxHealth;
     }
@@ -132,6 +134,10 @@ public class EnemyBase : MonoBehaviour
         Destroy(ragdoll, 5f);
 
         FindObjectOfType<LevelManager>().AddPoints(m_pointsGivenOnDeath);
+
+        AudioSource audi = ragdoll.AddComponent<AudioSource>();
+
+        m_soundControl.PlaySoundClip("Death", audi);
 
         if (m_isChildObject)
         {

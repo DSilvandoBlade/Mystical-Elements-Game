@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Charged Planet.unity
     guid: 7f0f360e3f315c54a904522b7d4338fe
+  - enabled: 1
+    path: Assets/Scenes/Floral Planet.unity
+    guid: e5e519069e1a7814cad8ee4b7a1d7d1a
+  - enabled: 1
+    path: Assets/Scenes/Plasmic Planet.unity
+    guid: 4f767e9c85d2b164680069140174f061
   m_configObjects: {}

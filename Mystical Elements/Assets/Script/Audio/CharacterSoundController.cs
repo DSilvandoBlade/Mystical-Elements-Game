@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicianSounds : MonoBehaviour
+public class CharacterSoundController : MonoBehaviour
 {
     [SerializeField] private SoundClips[] m_soundClips;
     
@@ -20,6 +20,18 @@ public class MagicianSounds : MonoBehaviour
             if (clips.AudioName == soundName)
             {
                 m_audioSource.PlayOneShot(clips.PlayRandomClip());
+                break;
+            }
+        }
+    }
+
+    public void PlaySoundClip(string soundName, AudioSource audioSource)
+    {
+        foreach (SoundClips clips in m_soundClips)
+        {
+            if (clips.AudioName == soundName)
+            {
+                audioSource.PlayOneShot(clips.PlayRandomClip());
                 break;
             }
         }
