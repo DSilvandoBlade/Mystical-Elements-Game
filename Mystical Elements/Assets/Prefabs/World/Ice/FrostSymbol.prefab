@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8739083697592024253}
   - component: {fileID: 7397881181893039731}
   - component: {fileID: 2455986510590635585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BottomLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6632749242818088097}
   - component: {fileID: 7333794808684688682}
   - component: {fileID: 2636003978819224602}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BottomRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 266133082552394023}
   - component: {fileID: 4671092001322823285}
   - component: {fileID: 2172101565581887805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TopRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5404497062244763919}
   - component: {fileID: 8028341473128581038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FrostSymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ Transform:
   - {fileID: 8676987968352713400}
   - {fileID: 266133082552394023}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -5.882, y: -6.627, z: -42.158}
 --- !u!95 &8028341473128581038
 Animator:
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 8676987968352713400}
   - component: {fileID: 6944215644892526145}
   - component: {fileID: 3300052296096661928}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TopLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 6126040598807125633}
   - component: {fileID: 52613087005836023}
   - component: {fileID: 7083695790729200740}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}

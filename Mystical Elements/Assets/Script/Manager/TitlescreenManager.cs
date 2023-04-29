@@ -27,7 +27,6 @@ public class TitlescreenManager : MonoBehaviour
         m_goButtonText.text = "Go to " + sceneName;
         m_sceneName = sceneName;
     }
-
     IEnumerator LoadScene(string sceneName)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);

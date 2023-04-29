@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TestRoom.unity
     guid: 07b8155856e32a44bbe0b16666e05b4c
   - enabled: 1
-    path: Assets/Scenes/FirstLevel.unity
+    path: Assets/Scenes/AlphaPlanet.unity
     guid: e52c31fad67393140afa80292375b159
   - enabled: 1
     path: Assets/Scenes/Frosted Planet.unity
