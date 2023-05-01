@@ -21,4 +21,9 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScreen");
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

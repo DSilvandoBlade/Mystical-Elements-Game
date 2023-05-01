@@ -354,6 +354,7 @@ public class Player : MonoBehaviour
         m_mobile = false;
         m_characterAnim.Play("Death");
         m_hudAnim.Play("Death");
+        FindObjectOfType<MusicManager>().Death();
     }
 
     #endregion

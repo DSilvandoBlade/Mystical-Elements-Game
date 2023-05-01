@@ -34,6 +34,8 @@ public class FinishPlatform : MonoBehaviour
 
             FindObjectOfType<Player>().gameObject.SetActive(false);
             m_ui.SetActive(false);
+
+            FindObjectOfType<MusicManager>().Complete();
         }
     }
 

@@ -15,7 +15,7 @@ public class EnemyBase : MonoBehaviour
 
     private enum EnemyType
     {
-        Pauk,
+        Cy,
         Orbi,
         Rook
     }
@@ -60,7 +60,16 @@ public class EnemyBase : MonoBehaviour
         m_animator = GetComponentInChildren<Animator>();
         m_player = FindObjectOfType<Player>();
         m_rigidbody = GetComponent<Rigidbody>();
-        m_soundControl = GetComponentInChildren<CharacterSoundController>();
+
+        if (m_enemyType == EnemyType.Rook)
+        {
+            m_soundControl = GetComponentInParent<CharacterSoundController>();
+        }
+
+        else
+        {
+            m_soundControl = GetComponentInChildren<CharacterSoundController>();
+        }
 
         m_health = m_maxHealth;
     }
@@ -151,8 +160,8 @@ public class EnemyBase : MonoBehaviour
     {
         switch (m_enemyType)
         {
-            case EnemyType.Pauk:
-                GetComponent<PaukBehaviour>().Freeze(isFrozen);
+            case EnemyType.Cy:
+                GetComponent<CyBehaviour>().Freeze(isFrozen);
                 break;
             case EnemyType.Orbi:
                 GetComponent<OrbiBehaviour>().Freeze(isFrozen);
