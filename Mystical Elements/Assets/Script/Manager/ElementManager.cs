@@ -46,7 +46,7 @@ public class ElementManager : MonoBehaviour
     private void Start()
     {
         m_player = FindObjectOfType<Player>();
-        m_playerInput = GetComponent<PlayerInput>();
+        m_playerInput = m_player.gameObject.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame

@@ -6238,7 +6238,7 @@ MonoBehaviour:
   m_maxHealth: 100
   m_selectedElement: 1
   m_maxSpeed: 25
-  m_turnSpeed: 100
+  m_turnSpeed: 2500
   m_groundCheckObj: {fileID: 4312998545887385696}
   m_groundLayerMask:
     serializedVersion: 2
@@ -6261,7 +6261,7 @@ MonoBehaviour:
   m_projectileSize: 1
   m_projectileSizeIncreaseRate: 1.6
   m_graphicsTransform: {fileID: 4312998546411414576}
-  m_graphicRotationSpeed: 10000
+  m_graphicRotationSpeed: 100000
   m_hatMesh: {fileID: 7959384634497559612}
   m_robeMesh: {fileID: 4429829529871301819}
   m_healthBar: {fileID: 0}
