@@ -1030,9 +1030,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_soundClips:
   - m_audioName: Death
-    m_audioList: []
+    m_audioList:
+    - {fileID: 8300000, guid: 055189075cc24db4db7cc4567e76df64, type: 3}
+    - {fileID: 8300000, guid: bd3ced9f224626e43955978a976a7340, type: 3}
+    - {fileID: 8300000, guid: 9cdc374b4adafd5469ffc4dcab4834ea, type: 3}
+    - {fileID: 8300000, guid: c7eea326914203e4b998839fa2e35e1e, type: 3}
+    - {fileID: 8300000, guid: 7dd1ba056f1901e488f304b8060d5138, type: 3}
+    - {fileID: 8300000, guid: 4e783dd10c3c5bc479481c46cd060348, type: 3}
+    - {fileID: 8300000, guid: 760993f7caa8a144387f6bf48c17060a, type: 3}
+    - {fileID: 8300000, guid: dd2b90832f5cea34fba8b1442fb23b64, type: 3}
   - m_audioName: Shoot
-    m_audioList: []
+    m_audioList:
+    - {fileID: 8300000, guid: 0857aec63066e0540bb626022178a342, type: 3}
+    - {fileID: 8300000, guid: 6f3ab4075b9164643b78e5333e0e5395, type: 3}
+    - {fileID: 8300000, guid: 6df5ee04ba196e14c8c2995a01419e69, type: 3}
+    - {fileID: 8300000, guid: b1808b8ae1078c24db68b43cbeaaeb6f, type: 3}
+    - {fileID: 8300000, guid: f1f6bfff1feaa3e41977a9a125e04f93, type: 3}
+    - {fileID: 8300000, guid: 2212e0c274ded0046ab2610c38627934, type: 3}
 --- !u!82 &948483905789209847
 AudioSource:
   m_ObjectHideFlags: 0
