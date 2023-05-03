@@ -2365,8 +2365,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Picking the correct element to use is just about remembering what is strong
-    against what. Here is how it works!
+  m_text: You can click the icon above to change elements. Whens the best time to
+    change? Well lets see!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb695ae4356c68d4f848dd2513e407cd, type: 2}
   m_sharedMaterial: {fileID: -3363032091247899326, guid: fb695ae4356c68d4f848dd2513e407cd, type: 2}
@@ -2498,7 +2498,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.06, y: -79.72}
-  m_SizeDelta: {x: 135.1042, y: 5.7617}
+  m_SizeDelta: {x: 102.7292, y: 5.7617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &728557384
 GameObject:
@@ -6164,19 +6164,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4559424719520243440, guid: ab848668b636c3041b575343eedfcb82, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9858243
+      value: 0.98582417
       objectReference: {fileID: 0}
     - target: {fileID: 4559424719520243440, guid: ab848668b636c3041b575343eedfcb82, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1677327
+      value: 0.16773266
       objectReference: {fileID: 0}
     - target: {fileID: 4559424719520243440, guid: ab848668b636c3041b575343eedfcb82, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039702104
+      value: 0.0040129055
       objectReference: {fileID: 0}
     - target: {fileID: 4559424719520243440, guid: ab848668b636c3041b575343eedfcb82, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00067551
+      value: -0.0006827741
       objectReference: {fileID: 0}
     - target: {fileID: 4559424719659378837, guid: ab848668b636c3041b575343eedfcb82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10175,19 +10175,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5934002546171703067, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9858243
+      value: 0.98582417
       objectReference: {fileID: 0}
     - target: {fileID: 5934002546171703067, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1677327
+      value: 0.16773266
       objectReference: {fileID: 0}
     - target: {fileID: 5934002546171703067, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0039702104
+      value: 0.0040129055
       objectReference: {fileID: 0}
     - target: {fileID: 5934002546171703067, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00067551
+      value: -0.0006827741
       objectReference: {fileID: 0}
     - target: {fileID: 6583163973812338739, guid: def0d6cac72017b40807fc37415b1bd2, type: 3}
       propertyPath: m_LocalScale.x
