@@ -115,7 +115,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &5717657945034512591
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,5 +269,5 @@ Transform:
   - {fileID: 7281791058960926446}
   - {fileID: 1660300140763695452}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

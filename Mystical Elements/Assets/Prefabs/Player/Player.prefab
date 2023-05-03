@@ -251,7 +251,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 695e40046b63b91429af8c4aa67e6281, type: 2}
+  - {fileID: 2100000, guid: 723a38ede14c40b4bb4d6d244b4e915d, type: 2}
   - {fileID: 2100000, guid: 70242d431826c7246889c2fa7de1b836, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -6237,27 +6237,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 100
   m_selectedElement: 1
-  m_maxSpeed: 25
+  m_maxSpeed: 2500
   m_turnSpeed: 2500
+  m_maxVelocity: 50
   m_groundCheckObj: {fileID: 4312998545887385696}
   m_groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
   slipperyMat: {fileID: 13400000, guid: 0ef4453f6226c494981291a881067445, type: 2}
   stickyMat: {fileID: 13400000, guid: cde13e1436f988d489304dd5ef4e443b, type: 2}
-  m_jumpUpVelocity: 50
+  m_jumpUpVelocity: 100
   m_coyoteTime: 0.2
   m_jumpBufferingTime: 0.2
+  m_jumpCooldown: 0
   m_meleeDamage: 5
   m_meleeCooldown: 0.5
   m_meleeTapBuffer: 0.35
   m_projectile: {fileID: 5322302399037302014, guid: ef6039d930a83c0478909e068d0c5d5a, type: 3}
   m_projectilePivot: {fileID: 7221572767017786052}
   m_projectileSpeed: 30
-  m_projectileCooldown: 1
+  m_projectileCooldown: 0.3
   m_chargeMax: 3
   m_projectileDamage: 20
-  m_projectileDamageIncreaseRate: 15
+  m_projectileDamageIncreaseRate: 45
   m_projectileSize: 1
   m_projectileSizeIncreaseRate: 1.6
   m_graphicsTransform: {fileID: 4312998546411414576}
@@ -8002,7 +8004,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 695e40046b63b91429af8c4aa67e6281, type: 2}
+  - {fileID: 2100000, guid: 723a38ede14c40b4bb4d6d244b4e915d, type: 2}
   - {fileID: 2100000, guid: 70242d431826c7246889c2fa7de1b836, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

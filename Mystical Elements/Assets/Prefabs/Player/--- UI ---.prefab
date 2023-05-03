@@ -241,7 +241,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2866,7 +2866,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &7204742651699185909
 MonoBehaviour:
@@ -3229,7 +3229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 0.9529412}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3410,7 +3410,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3530,7 +3530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.89411765}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4694,6 +4694,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8012431845787946350, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
       propertyPath: m_Name
       value: Exit_Button
@@ -4801,6 +4813,38 @@ PrefabInstance:
     - target: {fileID: 2153072023260896434, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
       propertyPath: m_text
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1802489146360523445}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SlideIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606075276963503448, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8012431845787946350, guid: 04ae51a903948a347a243bab4b1e7c25, type: 3}
       propertyPath: m_Name

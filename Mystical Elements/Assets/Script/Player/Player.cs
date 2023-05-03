@@ -48,6 +48,11 @@ public class Player : MonoBehaviour
     [Header("Attributes")]
     private float m_health;
     [SerializeField] private float m_maxHealth;
+    private float m_energy;
+    [SerializeField] private float m_maxEnergy;
+    [SerializeField] private float m_energyRegenRate;
+    [SerializeField] private float m_energyDecreaseRate;
+    [SerializeField] private float m_projectileEnergyCost;
     [SerializeField] private Element m_selectedElement;
     [Space(10)]
 
@@ -55,6 +60,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_maxSpeed;
     private float m_setMaxSpeed;
     [SerializeField] private float m_turnSpeed;
+    [SerializeField] private float m_maxVelocity;
     [Space(10)]
 
     [Header("Ground")]
@@ -70,6 +76,8 @@ public class Player : MonoBehaviour
     private float m_coyoteTimer;
     [SerializeField] private float m_jumpBufferingTime;
     private float m_jumpBufferingTimer;
+    [SerializeField] private float m_jumpCooldown;
+    private float m_jumpCooldownTimer;
     [Space(10)]
 
     [Header("Melee Settings")]
@@ -131,6 +139,7 @@ public class Player : MonoBehaviour
 
         m_setMaxSpeed = m_maxSpeed;
         m_health = m_maxHealth;
+        m_energy = m_maxEnergy;
 
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 30;
@@ -141,13 +150,17 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        m_xDirection = m_playerInput.actions["Move"].ReadValue<Vector2>().x * Time.deltaTime * m_maxSpeed;
-        m_zDirection = m_playerInput.actions["Move"].ReadValue<Vector2>().y * Time.deltaTime * m_maxSpeed;
+        m_xDirection = m_playerInput.actions["Move"].ReadValue<Vector2>().x;
+        m_zDirection = m_playerInput.actions["Move"].ReadValue<Vector2>().y;
         m_rDirection = m_playerInput.actions["Rot"].ReadValue<float>();
 
-        if (m_zDirection != 0 || m_xDirection != 0)
+        m_energy = Mathf.Clamp(m_energy + (m_energyRegenRate * Time.deltaTime), 0, m_maxEnergy);
+        m_energyBar.fillAmount = m_energy / m_maxEnergy;
+
+        if (m_playerInput.actions["Move"].IsInProgress())
         {
             GraphicsRotation();
+            CheckForSteps();
         }
 
         if (m_mobile)
@@ -182,19 +195,30 @@ public class Player : MonoBehaviour
     {
         //Speed Multiply on sprint check
         float speedMultiply = 1f;
-        if (IsSprinting())
+        if (IsSprinting() && !m_isCharging)
         {
             speedMultiply = 1.5f;
         }
 
+        else if (m_isCharging)
+        {
+            speedMultiply = 0.6f;
+        }
+
+        float z = m_zDirection * Time.fixedDeltaTime * m_maxSpeed * speedMultiply;
+        float x = m_xDirection * Time.fixedDeltaTime * m_maxSpeed * speedMultiply;
+
         //Movement
-        Vector3 direction = transform.forward * m_zDirection + transform.right * m_xDirection;
-        m_rigidbody.MovePosition(m_rigidbody.position + direction * ((m_maxSpeed * speedMultiply) * Time.fixedDeltaTime));
+        Vector3 direction = transform.forward * z + transform.right * x;
+        m_rigidbody.AddForce(direction, ForceMode.Acceleration);
 
         //Local Rotation
         Quaternion rightDirection = Quaternion.Euler(0f, m_rDirection * (m_turnSpeed * Time.fixedDeltaTime), 0f);
         Quaternion newRotation = Quaternion.Slerp(m_rigidbody.rotation, m_rigidbody.rotation * rightDirection, Time.fixedDeltaTime * 3f);
         m_rigidbody.MoveRotation(newRotation);
+
+        //Velocity Clamp
+        m_rigidbody.velocity = Vector3.ClampMagnitude(m_rigidbody.velocity, m_maxVelocity);
     }
 
     /// <summary>
@@ -208,17 +232,40 @@ public class Player : MonoBehaviour
             Debug.Log("JumpInputted");
         }
 
-        m_jumpBufferingTimer -= Time.deltaTime;
+        m_jumpBufferingTimer -= Time.fixedDeltaTime;
 
         if (!IsGrounded())
         {
-            m_coyoteTimer -= Time.deltaTime;
+            m_coyoteTimer -= Time.fixedDeltaTime;
         }
 
-        if (m_coyoteTimer > 0 && JumpAvaliable() && m_jumpBufferingTimer > 0)
+        if (m_coyoteTimer > 0 && JumpAvaliable() && m_jumpBufferingTimer > 0 && m_jumpCooldownTimer <= 0)
         {
-            m_rigidbody.AddForce(transform.up * 1000 * m_jumpUpVelocity * Time.deltaTime);
+            m_rigidbody.AddForce(transform.up * 1000 * m_jumpUpVelocity * Time.fixedDeltaTime);
+            m_jumpCooldownTimer = m_jumpCooldown;
             Debug.Log("Jumped");
+        }
+
+        if (m_jumpCooldownTimer > 0)
+        {
+            m_jumpCooldownTimer -= Time.fixedDeltaTime;
+        }
+    }
+
+    void CheckForSteps()
+    {
+        RaycastHit hit;
+        RaycastHit headHit;
+
+        Debug.DrawRay(transform.position + new Vector3(0, -0.2f, 0), transform.forward, Color.red, 1.0f);
+        Debug.DrawRay(transform.position + new Vector3(0, 0.8f, 0), transform.forward, Color.red, 1.0f);
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f) && !Physics.Raycast(transform.position + new Vector3(0, 0.4f, 0), transform.forward, out headHit, 1.0f))
+        {
+            Debug.Log("Hitting");
+            if (Vector3.Dot(Vector3.up, hit.normal) < 0.7f)
+            {
+                m_rigidbody.AddForce(transform.up * 2, ForceMode.VelocityChange);
+            }
         }
     }
 
@@ -257,19 +304,6 @@ public class Player : MonoBehaviour
     {
         return (m_playerInput.actions["Shift"].ReadValue<float>() != 0);
     }
-    #endregion
-
-    #region Camera Movement
-    /*
-    private void MobileTouch()
-    {
-        Debug.Log(m_playerInput.actions["Swipe"].ReadValue<float>());
-
-        if (m_playerInput.actions["Swipe"].ReadValue<float>() != 0)
-        {
-            Debug.Log("DOING IT");
-        }
-    }*/
     #endregion
 
     #region Health Functions (Add / Remove)
@@ -384,16 +418,18 @@ public class Player : MonoBehaviour
 
     private void ProjectileCharging()
     {
-        if (m_playerInput.actions["Range"].ReadValue<float>() > 0 && m_projectileTimer <= 0 && m_chargeTimer < m_chargeMax && m_meleeTimer <= 0 && m_projectileTimer <= 0) //melee cooldown is checked so both melee and ranged are not done at the same time
+        if (m_playerInput.actions["Range"].ReadValue<float>() > 0 && m_projectileTimer <= 0 && m_chargeTimer < m_chargeMax && m_meleeTimer <= 0 && m_projectileTimer <= 0 && m_energy >= m_projectileEnergyCost) //melee cooldown is checked so both melee and ranged are not done at the same time
         {
             m_isCharging = true;
 
             m_projectileTrueDamage += m_projectileDamageIncreaseRate * Time.deltaTime;
             m_projectileTrueSize += m_projectileSizeIncreaseRate * Time.deltaTime;
             m_chargeTimer += Time.deltaTime;
+
+            m_energy = Mathf.Clamp(m_energy - (m_energyDecreaseRate * Time.deltaTime), 0, m_maxEnergy);
         }
 
-        else if ((m_playerInput.actions["Range"].WasReleasedThisFrame() && m_isCharging) || m_chargeTimer >= m_chargeMax)
+        else if ((m_playerInput.actions["Range"].WasReleasedThisFrame() && m_isCharging) || m_chargeTimer >= m_chargeMax || (m_energy < m_projectileEnergyCost && m_isCharging))
         {
             m_projectileTrueDamage += m_projectileDamage;
             m_projectileTrueSize += m_projectileSize;
@@ -401,6 +437,8 @@ public class Player : MonoBehaviour
             ProjectileShoot(m_chargeTimer > 1.5f);
 
             m_projectileTimer = m_projectileCooldown + (m_chargeTimer / 2);
+
+            m_energy = Mathf.Clamp(m_energy - m_projectileEnergyCost, 0, m_maxEnergy);
 
             m_projectileTrueDamage = 0;
             m_projectileTrueSize = 0;
@@ -476,9 +514,10 @@ public class Player : MonoBehaviour
 
     private void GraphicsRotation()
     {
-        Vector3 direction = new Vector3(m_playerInput.actions["Move"].ReadValue<Vector2>().x, 0, m_playerInput.actions["Move"].ReadValue<Vector2>().y);
+        Vector3 direction = new Vector3(m_xDirection, 0, m_zDirection);
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-        m_graphicsTransform.localRotation = Quaternion.RotateTowards(transform.localRotation, toRotation, m_graphicRotationSpeed * Time.deltaTime);
+
+        m_graphicsTransform.localRotation = toRotation;
     }
     #endregion
 

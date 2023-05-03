@@ -62024,7 +62024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4559424720463992036, guid: ab848668b636c3041b575343eedfcb82, type: 3}
       propertyPath: m_nextSceneName
-      value: Frosted Planet
+      value: EndScreen
       objectReference: {fileID: 0}
     - target: {fileID: 4559424720931656080, guid: ab848668b636c3041b575343eedfcb82, type: 3}
       propertyPath: m_Targets.Array.data[0].target

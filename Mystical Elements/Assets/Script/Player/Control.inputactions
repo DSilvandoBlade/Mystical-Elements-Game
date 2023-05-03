@@ -109,7 +109,7 @@
                 {
                     "name": "Keyboard",
                     "id": "25c3f4e1-4841-449c-ba35-067a847a30af",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -164,7 +164,7 @@
                 {
                     "name": "Controller",
                     "id": "a0e716b3-2d3f-45d2-aac0-61d513a0570a",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

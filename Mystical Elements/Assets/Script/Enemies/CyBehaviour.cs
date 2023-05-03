@@ -53,8 +53,8 @@ public class CyBehaviour : MonoBehaviour
     #region Movement Functions
     private void NavMeshMovement()
     {
-        m_animator.SetBool("Moving", !InRange() && Alerted() && PathPossible());
-        m_animator.SetBool("Attacking", InRange());
+        m_animator.SetBool("Moving", !InRange(0.5f) && Alerted() && PathPossible());
+        m_animator.SetBool("Attacking", InRange(0.5f));
 
         //ROTATIONS TO PLAYER
         Vector3 point = m_player.transform.position;
@@ -109,6 +109,16 @@ public class CyBehaviour : MonoBehaviour
     private bool InRange()
     {
         if (m_distance <= m_agent.stoppingDistance)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool InRange(float addition)
+    {
+        if (m_distance + addition <= m_agent.stoppingDistance)
         {
             return true;
         }
