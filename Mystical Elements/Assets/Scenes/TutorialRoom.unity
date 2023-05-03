@@ -2365,8 +2365,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Picking the correct element to use is just about remembering what is strong
-    against what. Here is how it works!
+  m_text: You can click the icon above to change elements. Whens the best time to
+    change? Well lets see!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb695ae4356c68d4f848dd2513e407cd, type: 2}
   m_sharedMaterial: {fileID: -3363032091247899326, guid: fb695ae4356c68d4f848dd2513e407cd, type: 2}
@@ -2498,7 +2498,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.06, y: -79.72}
-  m_SizeDelta: {x: 135.1042, y: 5.7617}
+  m_SizeDelta: {x: 102.7292, y: 5.7617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &728557384
 GameObject:
@@ -4402,7 +4402,7 @@ PrefabInstance:
     - target: {fileID: 235839965807886575, guid: 57a370574e0bb3747a59b5689bf531a2, type: 3}
       propertyPath: m_ui
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1709422725}
     - target: {fileID: 235839965807886575, guid: 57a370574e0bb3747a59b5689bf531a2, type: 3}
       propertyPath: m_rods.Array.data[0]
       value: 
@@ -8061,6 +8061,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1802489146302608516, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802489146302608516, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802489146302608516, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802489146302608516, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1802489146428651581, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8098,6 +8114,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1802489146715178353, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802489146969340944, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802489146969340944, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802489146969340944, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802489146969340944, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -8332,6 +8364,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+--- !u!1 &1709422725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3853276131125696985, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+  m_PrefabInstance: {fileID: 1699896071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1738571009 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5704005066256404201, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
