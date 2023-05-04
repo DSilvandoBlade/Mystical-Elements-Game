@@ -6236,6 +6236,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 100
+  m_maxEnergy: 100
+  m_energyRegenRate: 2.5
+  m_energyDecreaseRate: 6
+  m_projectileEnergyCost: 5
   m_selectedElement: 1
   m_maxSpeed: 2500
   m_turnSpeed: 2500
@@ -6249,7 +6253,7 @@ MonoBehaviour:
   m_jumpUpVelocity: 100
   m_coyoteTime: 0.2
   m_jumpBufferingTime: 0.2
-  m_jumpCooldown: 0
+  m_jumpCooldown: 0.25
   m_meleeDamage: 5
   m_meleeCooldown: 0.5
   m_meleeTapBuffer: 0.35
