@@ -7,6 +7,8 @@ public class PlayerAnimationEvents : MonoBehaviour
     private Player m_player;
     private PlayerCombat m_combat;
 
+    [SerializeField] private ParticleSystem m_jumpParticle;
+
     private void Start()
     {
         m_player = GetComponentInParent<Player>();
@@ -32,5 +34,10 @@ public class PlayerAnimationEvents : MonoBehaviour
                 m_combat.DoesStun = false;
                 break;
         }
+    }
+
+    public void PlayJumpParticles()
+    {
+        m_jumpParticle.Play();
     }
 }

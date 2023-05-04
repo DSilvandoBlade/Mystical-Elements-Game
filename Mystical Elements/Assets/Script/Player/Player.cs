@@ -243,7 +243,7 @@ public class Player : MonoBehaviour
         {
             m_rigidbody.AddForce(transform.up * 1000 * m_jumpUpVelocity * Time.fixedDeltaTime);
             m_jumpCooldownTimer = m_jumpCooldown;
-            Debug.Log("Jumped");
+            m_characterAnim.SetTrigger("Jump");
         }
 
         if (m_jumpCooldownTimer > 0)

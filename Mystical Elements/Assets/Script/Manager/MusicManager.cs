@@ -15,6 +15,9 @@ public class MusicManager : MonoBehaviour
         m_source.clip = m_musicClip;
         m_source.Play();
         m_source.loop = true;
+
+        DataClass dataClass = JsonReadWriteSystem.LoadFromJson();
+        m_source.volume = dataClass.MusicVolume;
     }
 
     public void Death()
