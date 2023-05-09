@@ -43,6 +43,11 @@ public class TitlescreenManager : MonoBehaviour
         }
     }
 
+    public void GoToTutorialScene()
+    {
+        StartCoroutine(LoadScene("TutorialRoom"));
+    }
+
     public void GoToSelectedScene()
     {
         if (m_sceneName == null)
