@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
     private float m_xDirection;
     private float m_zDirection;
     private float m_rDirection;
+
+    private float m_velocityDamper;
     #endregion
 
     #region Serialized Variables
@@ -205,10 +207,22 @@ public class Player : MonoBehaviour
             speedMultiply = 0.6f;
         }
 
+        //Initialising Axis Speed
         float z = m_zDirection * Time.fixedDeltaTime * m_maxSpeed * speedMultiply;
         float x = m_xDirection * Time.fixedDeltaTime * m_maxSpeed * speedMultiply;
 
         //Movement
+
+        if (m_playerInput.actions["Move"].ReadValue<Vector2>() == Vector2.zero && IsGrounded())
+        {
+            m_velocityDamper = Mathf.SmoothStep(m_velocityDamper, 0f, 0.5f);
+        }
+
+        else
+        {
+            m_velocityDamper = Mathf.SmoothStep(m_velocityDamper, 1f, 0.5f);
+        }
+
         Vector3 direction = transform.forward * z + transform.right * x;
         m_rigidbody.AddForce(direction, ForceMode.Acceleration);
 
@@ -218,7 +232,8 @@ public class Player : MonoBehaviour
         m_rigidbody.MoveRotation(newRotation);
 
         //Velocity Clamp
-        m_rigidbody.velocity = Vector3.ClampMagnitude(m_rigidbody.velocity, m_maxVelocity);
+        m_rigidbody.velocity = Vector3.ClampMagnitude(m_rigidbody.velocity, m_maxVelocity * m_velocityDamper);
+        Debug.Log(m_maxVelocity * m_velocityDamper);
     }
 
     /// <summary>
@@ -241,6 +256,7 @@ public class Player : MonoBehaviour
 
         if (m_coyoteTimer > 0 && JumpAvaliable() && m_jumpBufferingTimer > 0 && m_jumpCooldownTimer <= 0)
         {
+            LimitUpwardVelocity();
             m_rigidbody.AddForce(transform.up * 1000 * m_jumpUpVelocity * Time.fixedDeltaTime);
             m_jumpCooldownTimer = m_jumpCooldown;
             m_characterAnim.SetTrigger("Jump");
@@ -252,7 +268,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    void CheckForSteps()
+    /// <summary>
+    /// Limit upward velocity when jumping
+    /// </summary>
+    private void LimitUpwardVelocity()
+    {
+        Vector3 localVelocity = m_rigidbody.transform.InverseTransformDirection(m_rigidbody.velocity);
+
+        // Resets the Y velocity to 0
+        localVelocity.y = 0;
+
+        // Convert the local velocity back to world space
+        Vector3 worldVelocity = m_rigidbody.transform.TransformDirection(localVelocity);
+
+        // Assign the updated velocity to the Rigidbody
+        m_rigidbody.velocity = worldVelocity;
+    }
+
+    /// <summary>
+    /// Step checker that boosts character up if step is in front of them
+    /// </summary>
+    private void CheckForSteps()
     {
         RaycastHit hit;
         RaycastHit headHit;

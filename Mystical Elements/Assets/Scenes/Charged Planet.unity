@@ -29117,6 +29117,10 @@ PrefabInstance:
       propertyPath: m_musicClip
       value: 
       objectReference: {fileID: 8300000, guid: 69a344ba5160bc84baae4189710e1817, type: 3}
+    - target: {fileID: 8982078263229713962, guid: ab848668b636c3041b575343eedfcb82, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ab848668b636c3041b575343eedfcb82, type: 3}
@@ -30938,6 +30942,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1654292725749956498, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.12793
+      objectReference: {fileID: 0}
     - target: {fileID: 1802489146018167617, guid: 12368ce43be9cd7498a3071bb8367638, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
