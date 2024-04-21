@@ -233,7 +233,6 @@ public class Player : MonoBehaviour
 
         //Velocity Clamp
         m_rigidbody.velocity = Vector3.ClampMagnitude(m_rigidbody.velocity, m_maxVelocity * m_velocityDamper);
-        Debug.Log(m_maxVelocity * m_velocityDamper);
     }
 
     /// <summary>
@@ -244,7 +243,6 @@ public class Player : MonoBehaviour
         if (m_playerInput.actions["Jump"].triggered)
         {
             m_jumpBufferingTimer = m_jumpBufferingTime;
-            Debug.Log("JumpInputted");
         }
 
         m_jumpBufferingTimer -= Time.fixedDeltaTime;
